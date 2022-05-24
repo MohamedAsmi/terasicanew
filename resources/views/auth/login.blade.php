@@ -6,7 +6,9 @@
         <div class="col-md-8 col-lg-6">
             <div class="card primary-color-b">
                 <div class="card-header col-6 m-auto"><img src="{{asset('img/login-logo.png')}}" alt="" style="width: 100%;"></div>
-                <div class="card-header col-12 m-auto text-center primary-text-cl-w"><h1><b>Kirjaudu</b></h1></div>
+                <div class="card-header col-12 m-auto text-center primary-text-cl-w">
+                    <h1><b>Kirjaudu</b></h1>
+                </div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
@@ -57,7 +59,21 @@
                                 <button type="submit" class="btn primary-color col-12">
                                     <h3><b>{{ __('Kirjaudu') }}</b></h3>
                                 </button>
-
+                                <div class="row">
+                                    <div class="col-12 mt-2">
+                                        <a class="btn btn-outline-dark col-12 primary-color-g primary-text-cl-b" href="{{ route('login.google') }}" role="button" style="text-transform:none;">
+                                            <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="{{asset('img/Google__G__Logo.png')}}" />
+                                            Login with Google
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 mt-2">
+                                    <a class="btn btn-primary col-12 primary-text-cl-b" href="{{ route('login.facebook') }}" role="button" style="text-transform:none;">
+                                        <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="{{asset('img/icon_facebook.png')}}" /> Login with Facebook
+                                        </a>
+                                    </div>
+                                </div>
                                 @if (Route::has('password.request'))
                                 <a class="btn btn-link text-center col-12 mt-5 primary-text-cl-w" href="{{ route('password.request') }}">
                                     {{ __('Unohtuiko salasana?') }}

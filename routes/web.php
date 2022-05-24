@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Auth\LoginController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +18,7 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', function () {
     return view('welcome');
+    // return view('auth.login');
 });
 
 Auth::routes(['verify' => true]);
@@ -32,6 +36,15 @@ Route::get('/charts', function () {
 Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
 Route::get('/email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
+////////////////////////////////////////////////////////////////////////////////////////
+Route::get('login/google', 'auth\LoginController@googleLogin')->name('login.google');
+Route::get('login/google/callback', 'auth\LoginController@googleCallback');
+//////////////////////////////////google login/////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////////////
+Route::get('login/facebook', 'auth\LoginController@facebookLogin')->name('login.facebook');
+Route::get('login/facebook/callback', 'auth\LoginController@facebookCallback');
+//////////////////////////////////facebook login/////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 Route::group(['middleware' => 'is_superadmin','middleware' => 'verified' ], function () {
