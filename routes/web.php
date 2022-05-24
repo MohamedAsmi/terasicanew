@@ -17,21 +17,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('/charts', function () {
-        return view('dashboard.charts');
-    });
+Route::get('/charts', function () {
+    return view('dashboard.charts');
+});
 // Route::get('superadmin/home', [HomeController::class, 'superadminHome'])->name('superadmin.home')->middleware('is_superadmin');
 // Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 
+//   Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
+//     Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
+//     Route::post('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
-
-
-
+Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
+Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
+Route::get('/email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-Route::group(['middleware' => 'is_superadmin'], function () {
+Route::group(['middleware' => 'is_superadmin','middleware' => 'verified' ], function () {
 
     ////////////////////////// settings ///////////////////////////////////////////////////
     Route::get('/setting', function () {
@@ -153,7 +156,7 @@ Route::group(['middleware' => 'is_superadmin'], function () {
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
-Route::group(['middleware' => 'is_admin'], function () {
+Route::group(['middleware' => 'is_admin' ,'middleware' => 'verified'], function () {
 
     Route::get('/addnewcategory', function () {
         return view('dashboard.add_new_category');
@@ -215,7 +218,7 @@ Route::group(['middleware' => 'is_admin'], function () {
 
 
 //////////////////////////////////////User Route////////////////////////////////////////////////////
-Route::group(['middleware' => 'is_user'], function () {
+Route::group(['middleware' => 'is_user' ,'middleware' => 'verified'], function () {
     Route::get('/home2', function () {
         return view('user.home2');
         // return view('user_view.home');
