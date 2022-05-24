@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Auth\LoginController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +18,7 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', function () {
     return view('welcome');
+    // return view('auth.login');
 });
 
 Auth::routes();
@@ -25,10 +29,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('superadmin/home', [HomeController::class, 'superadminHome'])->name('superadmin.home')->middleware('is_superadmin');
 // Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 
+////////////////////////////////////////////////////////////////////////////////////////
+Route::get('login/google', 'auth\LoginController@googleLogin')->name('login.google');
+Route::get('login/google/callback', 'auth\LoginController@googleCallback');
+//////////////////////////////////google login/////////////////////////////////////////
 
-
-
-
+////////////////////////////////////////////////////////////////////////////////////////
+Route::get('login/facebook', 'auth\LoginController@facebookLogin')->name('login.facebook');
+Route::get('login/facebook/callback', 'auth\LoginController@facebookCallback');
+//////////////////////////////////facebook login/////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 Route::group(['middleware' => 'is_superadmin'], function () {
