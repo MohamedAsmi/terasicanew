@@ -21,6 +21,7 @@ Route::get('/', function () {
     // return view('auth.login');
 });
 
+
 Auth::routes(['verify' => true]);
 Route::get('/home', function () { 
     return view('user.home');

@@ -90,7 +90,7 @@ class LoginController extends Controller
         return redirect()->route('login');
      
     }
-
+ 
       /**
      * Redirect the user to the facebook authentication page.
      *
