@@ -17,12 +17,14 @@ use App\Http\Controllers\Auth\LoginController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('user.home');
     // return view('auth.login');
 });
 
 Auth::routes(['verify' => true]);
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', function () { 
+    return view('user.home');
+})->name('home');
 Route::get('/charts', function () {
     return view('dashboard.charts');
 });
