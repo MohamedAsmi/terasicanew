@@ -53,7 +53,7 @@
                     </ul>
                 </li> --}}
                 <li class="nav-item ">
-                    <a href="{{ url('/charts') }}" class="nav-link ">
+                    <a href="{{ url('/Super-Admin-Profile') }}" class="nav-link ">
                         <i class="fa-brands fa-microsoft"></i>
                         <p>
                             Hallintapaneeli
@@ -61,7 +61,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('/chat') }}" class="nav-link">
+                    <a href="{{ url('/chats') }}" class="nav-link">
                         <i class="fa-solid fa-message"></i>
                         <p>
                             Viestit
@@ -69,7 +69,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('/datatable2') }}" class="nav-link">
+                    <a href="{{ url('/Orders') }}" class="nav-link">
                         <i class="fa-solid fa-bag-shopping"></i>
                         <p>
                             Tilaukset
@@ -77,7 +77,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('/datatable') }}" class="nav-link">
+                    <a href="{{ url('/Reservations') }}" class="nav-link">
                         <i class="fa-solid fa-calendar-check"></i>
                         <p>
                             Varaukset
@@ -85,7 +85,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('/kampjet') }}" class="nav-link ">
+                    <a href="{{ url('/Campaigns') }}" class="nav-link ">
                         <i class="fa-solid fa-crosshairs"></i>
                         <p>
                             Kampanjat
@@ -93,7 +93,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('/product') }}" class="nav-link">
+                    <a href="{{ url('/Products') }}" class="nav-link">
                         <i class="fa-solid fa-bars"></i>
                         <p>
                             Menu & tuotteet
@@ -101,7 +101,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('/staff') }}" class="nav-link">
+                    <a href="{{ url('/Employees') }}" class="nav-link">
                         <i class="fa-solid fa-user-group"></i>
                         <p>
                             Työntekijät
@@ -117,7 +117,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('/vierailijat') }}" class="nav-link">
+                    <a href="{{ url('/Analytics') }}" class="nav-link">
                         <i class="fa-solid fa-clipboard-list"></i>
                         <p>
                             Analytiikka

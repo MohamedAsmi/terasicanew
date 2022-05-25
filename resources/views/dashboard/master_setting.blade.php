@@ -42,12 +42,11 @@
                             </p>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('/setting') }}" class="nav-link" attr="pg-1">
-                                <a href="{{ url('/terassisi-somet') }}" class="nav-link ">
-                                    <p class="text-sub">
-                                        Terassin tiedot
-                                    </p>
-                                </a>
+                            <a href="{{ url('/terassisi-somet') }}" class="nav-link ">
+                                <p class="text-sub">
+                                    Terassin tiedot
+                                </p>
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('/teams') }}" class="nav-link ">

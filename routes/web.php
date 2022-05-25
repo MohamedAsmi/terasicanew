@@ -24,10 +24,10 @@ Route::get('/', function () {
 Auth::routes(['verify' => true]);
 Route::get('/home', function () { 
     return view('user.home');
-})->name('home');
-Route::get('/charts', function () {
-    return view('dashboard.charts');
 });
+// Route::get('/charts', function () {
+//     return view('dashboard.charts');
+// })->name('home');
 // Route::get('superadmin/home', [HomeController::class, 'superadminHome'])->name('superadmin.home')->middleware('is_superadmin');
 // Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 
@@ -49,65 +49,95 @@ Route::get('login/facebook/callback', 'auth\LoginController@facebookCallback');
 //////////////////////////////////facebook login/////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-Route::group(['middleware' => 'is_superadmin','middleware' => 'verified' ], function () {
 
-    ////////////////////////// settings ///////////////////////////////////////////////////
-    Route::get('/setting', function () {
-        return view('dashboard.setting');
-    })->name('superadmin');
-  
-    Route::get('/time_monitorings', function () {
-        return view('dashboard.time_monitorings');
-    });
-    Route::get('/kolloko', function () {
-        return view('dashboard.kolloko');
-    });
-    Route::get('/malit', function () {
-        return view('dashboard.malit');
-    });
+Route::group(['middleware' => 'auth', 'is_superadmin','verified'], function () {
+    
+    Route::get('/Super-Admin-Profile', 'SuperAdmin\ControlPanelController@index')->name('superadmin');
+    Route::get('/chats', 'SuperAdmin\ChatsController@index');//viestit
+    Route::get('/Orders', 'SuperAdmin\OrderController@index');
+    Route::get('/Reservations', 'SuperAdmin\ReservationController@index');
+    Route::get('/Campaigns', 'SuperAdmin\CampaignController@index');
+    Route::get('/Products', 'SuperAdmin\ProductController@index');
+    Route::get('/Employees','SuperAdmin\EmployeeController@index');
+    Route::get('/Analytics', 'SuperAdmin\AnalyticController@index');
+    Route::get('/earn', 'SuperAdmin\EarnController@index');
+    Route::get('/tablemap', 'SuperAdmin\TableMapController@index');
+
+
     Route::get('/edit_design_file', function () {
-        return view('dashboard.edit_design_file');
+        return view('superadmin.edit_design_file');
     });
-    Route::get('/earn', function () {
-        return view('dashboard.earn');
-    });
+    
+    
+   
 
-  
+
+    
+    ////////////////////////// settings ///////////////////////////////////////////////////
+
     Route::get('/qr-koodit', function () {
-        return view('dashboard.settings.qr-koodit');
+        return view('superadmin.settings.qr-koodit');
     });
 
     Route::get('/terassisi-somet', function () {
-        return view('dashboard.settings.terassisi-somet');
+        return view('superadmin.settings.terassisi-somet');
     });
 
     Route::get('/avainsanat', function () {
-        return view('dashboard.settings.avainsanat');
+        return view('superadmin.settings.avainsanat');
     });
 
     Route::get('/widgetti', function () {
-        return view('dashboard.settings.widgetti');
+        return view('superadmin.settings.widgetti');
     });
 
     Route::get('/facebook-pixels', function () {
-        return view('dashboard.settings.facebook-pixels');
+        return view('superadmin.settings.facebook-pixels');
     });
 
     Route::get('/google-analytics', function () {
-        return view('dashboard.settings.google-analytics');
+        return view('superadmin.settings.google-analytics');
     });
-
-    // Route::get('/widgetit', function () {
-    //     return view('dashboard.settings.widgetit');
-    // });
 
     Route::get('/tyuntekijaroolit', function () {
-        return view('dashboard.settings.tyuntekijaroolit');
+        return view('superadmin.settings.tyuntekijaroolit');
+    });
+    Route::get('/malit', function () {
+        return view('superadmin.settings.malit');
+    });
+    Route::get('/kolloko', function () {
+        return view('superadmin.settings.kolloko');
+    });
+    
+    Route::get('/time_monitorings', function () {
+        return view('superadmin.settings.time_monitorings');
     });
     Route::get('/teams', function () {
-        return view('dashboard.teams');
+        return view('superadmin.settings.teams');
     });
 
+
+
+
+
+    Route::get('/profile', function () {
+        return view('profile.home');
+    });//Hallintapaneeli
+    
+    Route::get('/todo', function () {
+        return view('dashboard.todo');
+    });//order view
+
+    
+
+   
+    
+    
+    
+    
+
+  
+    
 
 
     //////////////////////////////////////////////////
@@ -120,51 +150,27 @@ Route::group(['middleware' => 'is_superadmin','middleware' => 'verified' ], func
     Route::get('/summary-checkout', function () {
         return view('user_view.summary-checkout');
     });
-    Route::get('/charts', function () {
-        return view('dashboard.charts');
-    })->name('superadmin');
+    
 
     Route::get('/chart', function () {
         return view('dashboard.charts');
     });
-    Route::get('/chats', function () {
-        return view('dashboard.chats');
-    });
-    Route::get('/datatable', function () {
-        return view('dashboard.datatable');
-    });
-    Route::get('/datatable2', function () {
-        return view('dashboard.datatable2');
-    });
+    
+    
+   
     Route::get('/order_semmary', function () {
         return view('dashboard.order_summery_client');
     });
     Route::get('/order_semmary_merchain', function () {
         return view('dashboard.order_summery_merchain');
     });
-    Route::get('/todo', function () {
-        return view('dashboard.todo');
-    });
+    
+  
 
-    Route::get('/vierailijat', function () {
-        return view('dashboard.Vierailijat');
-    });
+ 
+    
 
-    Route::get('/tablemap', function () {
-        return view('dashboard.tablemap');
-    });
-
-    Route::get('/product', function () {
-        return view('dashboard.product');
-    });
-
-    Route::get('/staff', function () {
-        return view('dashboard.Staff');
-    });
-
-    Route::get('/kampjet', function () {
-        return view('dashboard.kampjet');
-    });
+    
 });
 ///////////////////////////////////////Super Admin Route/////////////////////////////////////////////////
 
@@ -189,15 +195,9 @@ Route::group(['middleware' => 'is_admin' ,'middleware' => 'verified'], function 
     Route::get('/chart', function () {
         return view('dashboard.charts');
     });
-    Route::get('/chats', function () {
-        return view('dashboard.chats');
-    });
-    Route::get('/datatable', function () {
-        return view('dashboard.datatable');
-    });
-    Route::get('/datatable2', function () {
-        return view('dashboard.datatable2');
-    });
+
+  
+   
     Route::get('/order_semmary', function () {
         return view('dashboard.order_summery_client');
     });
@@ -208,26 +208,12 @@ Route::group(['middleware' => 'is_admin' ,'middleware' => 'verified'], function 
         return view('dashboard.todo');
     });
 
-    Route::get('/vierailijat', function () {
-        return view('dashboard.Vierailijat');
-    });
+   
 
-    Route::get('/tablemap', function () {
-        return view('dashboard.tablemap');
-    });
 
-    Route::get('/product', function () {
-        return view('dashboard.product');
-    });
 
-    Route::get('/staff', function () {
-        return view('dashboard.Staff');
-    });
 
-    Route::get('/kampjet', function () {
-        return view('dashboard.kampjet');
-    });
-
+  
 });
 //////////////////////////////////////Admin Route/////////////////////////////////////////////
 
@@ -247,9 +233,7 @@ Route::group(['middleware' => 'is_user' ,'middleware' => 'verified'], function (
         // return view('user_view.home');
     });
 
-    Route::get('/profile', function () {
-        return view('profile.home');
-    });
+   
     Route::get('/frame', function () {
         return view('profile.frame');
         // return view('user_view.home');
