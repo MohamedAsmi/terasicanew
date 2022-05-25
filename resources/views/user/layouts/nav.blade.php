@@ -9,7 +9,7 @@
             <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="active" href="{{ url('/home1') }}">Esittelyssä</a></li>
+                    <li><a class="active" href="{{ url('/home') }}">Esittelyssä</a></li>
                     <li><a href="{{ url('/home2') }}">Terassit kartalla</a></li>
                     <li><a href="{{ url('/home3') }}">Tapahtumat</a></li>
                     <li><a href="{{ url('/home4') }}">Terassiuutiset</a></li>
