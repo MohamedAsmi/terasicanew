@@ -66,7 +66,7 @@
                                             Login with Google
                                         </a>
                                     </div>
-                                </div>
+                                </div> 
                                 <div class="row">
                                     <div class="col-12 mt-2">
                                     <a class="btn btn-primary col-12 primary-text-cl-b" href="{{ route('login.facebook') }}" role="button" style="text-transform:none;">
