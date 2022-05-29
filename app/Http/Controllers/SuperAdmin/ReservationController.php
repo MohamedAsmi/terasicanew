@@ -15,7 +15,7 @@ class ReservationController extends BaseController
      */
     public function __construct()
     {
-        $this->middleware(['is_superadmin','verified']);
+        $this->middleware(['auth','verified']);
     }
     
     

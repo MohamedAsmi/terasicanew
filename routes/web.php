@@ -51,7 +51,7 @@ Route::get('login/facebook/callback', 'auth\LoginController@facebookCallback');
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-Route::group(['middleware' => 'auth', 'is_superadmin','verified'], function () {
+Route::group(['middleware' => 'auth', 'middleware'=>'verified'], function () {
     
     Route::get('/Super-Admin-Profile', 'SuperAdmin\ControlPanelController@index')->name('superadmin');
     Route::get('/chats', 'SuperAdmin\ChatsController@index');//viestit
