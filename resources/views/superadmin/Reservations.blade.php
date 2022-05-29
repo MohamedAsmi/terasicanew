@@ -18,11 +18,7 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.js"
-        integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js" defer>
-    </script>
+
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid col-md-10">
@@ -182,13 +178,32 @@
                     </tr>
                 </tfoot>
             </table>
+            <table id="reservation-list" class="table dt-responsive nowrap w-100 table-sm"
+                data-url="{{ route('reservation.list') }}">
+                <thead>
+                    <tr>
+                        <th>Varaajan nimi</th>
+                        <th>Henkilömäärä</th>
+                        <th>Päivämäärä</th>
+                        <th>Kellon aika</th>
+                        <th style="width: 6%;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
         </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
+
 
     <script>
         $(document).ready(function() {
             $('#example').DataTable();
         });
     </script>
+    @push('js')
+        <script src="{{ asset('js/superadmin/reservation.js?t=' . config('app.t')) }}"></script>
+    @endpush
+
 @endsection

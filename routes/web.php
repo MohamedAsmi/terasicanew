@@ -65,6 +65,11 @@ Route::group(['middleware' => 'auth', 'is_superadmin','verified'], function () {
     Route::get('/tablemap', 'SuperAdmin\TableMapController@index');
 
 
+
+    //datatable
+    Route::get('/tablemap', 'SuperAdmin\ReservationController@list')->name('reservation.list');
+
+
     Route::get('/edit_design_file', function () {
         return view('superadmin.edit_design_file');
     });
