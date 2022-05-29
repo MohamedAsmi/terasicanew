@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\User;
+use App\Reservation;
 
 
 class CreateReservationsSeeder extends Seeder
@@ -15,27 +15,28 @@ class CreateReservationsSeeder extends Seeder
     {
        $reservation = [
             [
-               'name'=>'Admin',
-               'email'=>'shamsudeenasmi96@gmail.com',
-                'is_admin'=>'1',
-               'password'=> bcrypt('123456'),
+                'r_name'=>'admin1',
+               'num_of_book'=>'1',
+               'date'=>'2022-05-29 08:27:19',
+                'clock_time'=>'2022-05-29 08:27:19',
+               
             ],
             [
-                'name'=>'Admin',
-                'email'=>'admin@itsolutionstuff.com',
-                 'is_admin'=>'2',
-                'password'=> bcrypt('123456'),
+                'r_name'=>'admin2',
+                'num_of_book'=>'2',
+                'date'=>'2022-05-29 08:27:19',
+                 'clock_time'=>'2022-05-29 08:27:19',
              ],
             [
-               'name'=>'User',
-               'email'=>'shamsudeenasmi696@gmail.com',
-                'is_admin'=>'0',
-               'password'=> bcrypt('123456'),
+                'r_name'=>'admin3',
+                'num_of_book'=>'3',
+                'date'=>'2022-05-29 08:27:19',
+                 'clock_time'=>'2022-05-29 08:27:19',
             ],
         ];
   
         foreach ($reservation as $key => $value) {
-            User::create($value);
+            Reservation::create($value);
         }
     }
 }
