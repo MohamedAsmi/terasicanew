@@ -924,3 +924,7 @@ p{
         width: 1390px;
     }
 } */
+
+.dataTables_processin{
+    display: none !important;
+}
