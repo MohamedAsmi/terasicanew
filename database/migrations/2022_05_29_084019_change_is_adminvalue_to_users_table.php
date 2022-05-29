@@ -15,7 +15,7 @@ class ChangeIsAdminvalueToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->boolean('is_admin')->default(0)->change();
-            $table->renameColumn('id','user_id');
+            // $table->renameColumn('id','user_id');
         });
     }
 
