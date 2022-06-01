@@ -66,6 +66,8 @@ Route::group(['middleware' => 'auth', 'middleware'=>'verified'], function () {
 
 
 
+    
+
     //datatable
     Route::get('/tablemap', 'SuperAdmin\ReservationController@list')->name('reservation.list');
     Route::put('/tablemap', 'SuperAdmin\ReservationController@list')->name('reservation.edit');
