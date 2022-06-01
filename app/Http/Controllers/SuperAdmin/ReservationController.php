@@ -106,7 +106,15 @@ class ReservationController extends BaseController
             // );
 
         return DataTables::of($model)
-            ->addIndexColumn()
-            ->make(true);
+        ->addColumn('edit', function ($model) {
+            return '<a href="' . route('reservation.edit', ['id' => $model->r_id]) . '" class="btn btn-success" title="Edit" data-id="' . $model->r_id . '"><i class="fas fa-edit"></i></a>';
+        })
+        ->addColumn('delete', function ($model) {
+            return '<a href="' . route('reservation.delete', ['id' => $model->r_id]) . '" class="btn btn-danger" title="Edit" data-id="' . $model->r_id . '"><i class="fas fa-trash"></i></a>';
+        })
+
+        ->rawColumns(['edit','delete'])
+        ->addIndexColumn()
+        ->make(true);
     }
 }

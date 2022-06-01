@@ -30,7 +30,8 @@
                         <th>Henkilömäärä</th>
                         <th>Päivämäärä</th>
                         <th>Date</th>
-
+                        <th style="width: 6%;" class="text-center"></th>
+                        <th style="width: 6%;" class="text-center"></th>
                     </tr>
                 </thead>
                 <tbody>

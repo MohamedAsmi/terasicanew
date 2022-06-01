@@ -11,7 +11,16 @@ $(document).ready(async function () {
         {
             data: 'clock_time'
         },
-
+        {
+            data: 'edit',
+            sortable: false,
+            searchable: false
+        },
+        {
+            data: 'delete',
+            sortable: false,
+            searchable: false
+        },
     ];
 
     let table = await initDataTable($('#reservation-list'), tbl1);
