@@ -69,12 +69,18 @@ Route::group(['middleware' => 'auth', 'middleware'=>'verified'], function () {
 
     // datatable
     Route::get('/tablemap', 'SuperAdmin\ReservationController@list')->name('reservation.list');
+<<<<<<< HEAD
     // Employee List
     Route::get('/employeetablemap', 'SuperAdmin\EmployeeController@list')->name('employee.list');
     Route::get('/employee/delete/{id}','SuperAdmin\EmployeeController@destroy')->name('delete.employee');
 
     //add employee 
     Route::post('/employee/store','SuperAdmin\EmployeeController@store')->name('store.employee');
+=======
+    Route::put('/tablemap', 'SuperAdmin\ReservationController@list')->name('reservation.edit');
+    Route::put('/tablemapdelete', 'SuperAdmin\ReservationController@delete')->name('reservation.delete');
+
+>>>>>>> 47c3a183d60e5d693f3910bb36676bd96695f80a
 
     //edit employee 
     Route::post('/employee/edit','SuperAdmin\EmployeeController@edit')->name('edit.employee');
@@ -85,6 +91,8 @@ Route::group(['middleware' => 'auth', 'middleware'=>'verified'], function () {
     
     
    
+
+    
 
 
     
