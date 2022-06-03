@@ -27,7 +27,7 @@
         <div class="row" style="width: 100%;">
             <div class="col-12">
                 <h2 class="col-4 left_alignment">Työntekijät</h2>
-                <button class="bg-light download_button primary-color-w"><i class="fa-solid fa-plus"></i> Kutsu työntekijä</button>
+                <button class="bg-light download_button primary-color-w add_employee"><i class="fa-solid fa-plus"></i> Kutsu työntekijä</button>
                 <button class="bg-light download_button primary-color-w"><i class="fa-solid fa-download"></i> Lataa kuukausittainen raportti</button>
             </div>
             <div class="col-12 mt-4 mb-3">
@@ -39,7 +39,8 @@
 
             </div>
         </div>
-        <table id="example" class="display" style="width:100%">
+
+        <table id="employee_list" class="display table dt-responsive nowrap w-100 table-sm" style="width:100%">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -51,116 +52,32 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td><span class="circle-logo"><img src="{{asset('img/Memoji Boys.png')}}" style="width: 80%; margin:10%;"></span>Justus Berner</td>
-                    <td>Tarjoilija</td>
-                    <td>{item-total-price}</td>
-                    <td>1.3.2022</td>
-                    <td><span class="left_alignment row_button">Muokkaa</span></td>
-                    <td><span class="left_alignment row_button">Poista</span></td>
-                </tr>
-                <tr>
-                    <td><span class="circle-logo"><img src="{{asset('img/Memoji Boys.png')}}" style="width: 80%; margin:10%;"></span>Justus Berner</td>
-                    <td>Tarjoilija</td>
-
-                    <td>(worker-week-hour}
-
-                    </td>
-                    <td>1.3.2022</td>
-                    <td><span class="left_alignment row_button">Muokkaa</span></td>
-                    <td><span class="left_alignment row_button">Poista</span></td>
-                </tr>
-                <tr>
-                    <td><span class="circle-logo"><img src="{{asset('img/Memoji Boys.png')}}" style="width: 80%; margin:10%;"></span>Justus Berner</td>
-                    <td>Tarjoilija</td>
-                    <td>(worker-week-hour}
-
-                    </td>
-                    <td>1.3.2022</td>
-                    <td><span class="left_alignment row_button">Muokkaa</span></td>
-                    <td><span class="left_alignment row_button">Poista</span></td>
-                </tr>
-                <tr>
-                    <td><span class="circle-logo"><img src="{{asset('img/Memoji Boys.png')}}" style="width: 80%; margin:10%;"></span>Justus Berner</td>
-                    <td>Tarjoilija</td>
-                    <td>(worker-week-hour}
-
-                    </td>
-                    <td>1.3.2022</td>
-                    <td><span class="left_alignment row_button">Muokkaa</span></td>
-                    <td><span class="left_alignment row_button">Poista</span></td>
-                </tr>
-                <tr>
-                    <td><span class="circle-logo"><img src="{{asset('img/Memoji Boys.png')}}" style="width: 80%; margin:10%;"></span>Justus Berner</td>
-                    <td>Tarjoilija</td>
-                    <td>(worker-week-hour}</td>
-                    <td>1.3.2022</td>
-                    <td><span class="left_alignment row_button">Muokkaa</span></td>
-                    <td><span class="left_alignment row_button">Poista</span></td>
-                </tr>
-                <tr>
-                    <td><span class="circle-logo"><img src="{{asset('img/Memoji Boys.png')}}" style="width: 80%; margin:10%;"></span>Justus Berner</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><span class="left_alignment row_button">Muokkaa</span></td>
-                    <td><span class="left_alignment row_button">Poista</span></td>
-                </tr>
-                <tr>
-                    <td><span class="circle-logo"><img src="{{asset('img/Memoji Boys.png')}}" style="width: 80%; margin:10%;"></span>Justus Berner</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><span class="left_alignment row_button">Muokkaa</span></td>
-                    <td><span class="left_alignment row_button">Poista</span></td>
-                </tr>
-                <tr>
-                    <td><span class="circle-logo"><img src="{{asset('img/Memoji Boys.png')}}" style="width: 80%; margin:10%;"></span>Justus Berner</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><span class="left_alignment row_button">Muokkaa</span></td>
-                    <td><span class="left_alignment row_button">Poista</span></td>
-                </tr>
-                <tr>
-                <td><span class="circle-logo"><img src="{{asset('img/Memoji Boys.png')}}" style="width: 80%; margin:10%;"></span>Justus Berner</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><span class="left_alignment row_button">Muokkaa</span></td>
-                    <td><span class="left_alignment row_button">Poista</span></td>
-                </tr>
-                <tr>
-                    <td><span class="circle-logo"><img src="{{asset('img/Memoji Boys.png')}}" style="width: 80%; margin:10%;"></span>Justus Berner</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><span class="left_alignment row_button">Muokkaa</span></td>
-                    <td><span class="left_alignment row_button">Poista</span></td>
-                </tr>
-                <tr>
-                    <td><span class="circle-logo"><img src="{{asset('img/Memoji Boys.png')}}" style="width: 80%; margin:10%;"></span>Justus Berner</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><span class="left_alignment row_button">Muokkaa</span></td>
-                    <td><span class="left_alignment row_button">Poista</span></td>
-                </tr>
-
             </tbody>
-            
         </table>
+        <!-- Modal -->
+        <div class="modal fade" id="EmployeeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content primary-color-g" style="border-radius: 20px;">
+                    <div class="delete-modal-body p-4">
+                    </div>
+                    <div class="addoredit-modal-body">
+                        <h2 class="w-90 text-center title mt-4 mb-3">Muokkaa työntekijää:<br>{worker-name}</h2>
+                        <button type="button" class="btn mt-3 mb-3" attr="close" style="position: absolute; top: 15px; right: 20px;"> &times;</button>
+
+                        <form action="" method="POST" class="pr-4 pl-4">
+                            @csrf
+                            <div class="form-content row">
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.js"
-        integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js" defer>
-    </script>
-    <script>
-        $(document).ready(function() {
-            $('#example').DataTable();
-            $('.none-attr').removeClass('sorting');
-        });
-    </script>
+</script>
+@push('js')
+<script src="{{ asset('js/superadmin/employee.js?t=' . config('app.t')) }}"></script>
+@endpush
 @endsection

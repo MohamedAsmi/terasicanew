@@ -924,3 +924,10 @@ p{
         width: 1390px;
     }
 } */
+
+#employee_list .odd{
+    background-color: #fff;
+}
+#employee_list .even{
+    background-color: #F2F2F2;
+}

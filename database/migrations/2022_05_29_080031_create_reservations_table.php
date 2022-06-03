@@ -18,7 +18,7 @@ class CreateReservationsTable extends Migration
             $table->string('r_name');
             $table->string('num_of_book');
             $table->timestamp('date');
-            $table->timestamp('clock_time');        
+            $table->string('clock_time');        
             $table->timestamps();
         });
     }

@@ -26,6 +26,7 @@ Auth::routes(['verify' => true]);
 Route::get('/home', function () { 
     return view('user.home');
 });
+
 // Route::get('/charts', function () {
 //     return view('dashboard.charts');
 // })->name('home');
@@ -66,9 +67,17 @@ Route::group(['middleware' => 'auth', 'middleware'=>'verified'], function () {
 
 
 
-    //datatable
+    // datatable
     Route::get('/tablemap', 'SuperAdmin\ReservationController@list')->name('reservation.list');
+    // Employee List
+    Route::get('/employeetablemap', 'SuperAdmin\EmployeeController@list')->name('employee.list');
+    Route::get('/employee/delete/{id}','SuperAdmin\EmployeeController@destroy')->name('delete.employee');
 
+    //add employee 
+    Route::post('/employee/store','SuperAdmin\EmployeeController@store')->name('store.employee');
+
+    //edit employee 
+    Route::post('/employee/edit','SuperAdmin\EmployeeController@edit')->name('edit.employee');
 
     Route::get('/edit_design_file', function () {
         return view('superadmin.edit_design_file');
