@@ -14,11 +14,11 @@ class CreateEmployeeSeeder extends Seeder
     {
         $employee = [
              [
-                 'e_name'=>'admin1',
-                 'e_email'=>'test@gmail.com',
+                'e_name'=>'admin1',
+                'e_email'=>'test@gmail.com',
                 'work_task'=>'1',
                 'n_of_h_week'=>'10',
-                 'last_spot'=>'2022-05-29 08:27:19',
+                'last_spot'=>'2022-05-29 08:27:19',
                 
              ],
              [
@@ -26,14 +26,14 @@ class CreateEmployeeSeeder extends Seeder
                  'e_email'=>'test@gmail.com',
                  'work_task'=>'2',
                  'n_of_h_week'=>'10',
-                  'last_spot'=>'2022-05-29 08:27:19',
+                 'last_spot'=>'2022-05-29 08:27:19',
               ],
              [
                  'e_name'=>'admin3',
                  'e_email'=>'test@gmail.com',
                  'work_task'=>'3',
                  'n_of_h_week'=>'10',
-                  'last_spot'=>'2022-05-29 08:27:19',
+                 'last_spot'=>'2022-05-29 08:27:19',
              ],
          ];
    

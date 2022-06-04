@@ -10,7 +10,9 @@
 .primary-text-cl-b {
     color: #000 !important;
 }
-
+.primary-color-tr{
+    background-color: transparent !important;
+}
 .primary-color-b {
     background-color: #000 !important;
 }
@@ -39,7 +41,9 @@
 .border-radius_6 {
     border-radius: 6px;
 }
-
+.border-radius_9 {
+    border-radius: 9px;
+}
 /* /////////////  navbar style  ///////////////////// */
 #navbar_list {
     list-style: none;
@@ -924,15 +928,93 @@ p{
         width: 1390px;
     }
 } */
-
-<<<<<<< HEAD
+/* /////////////////////////////////////// */
 #employee_list .odd{
     background-color: #fff;
 }
 #employee_list .even{
     background-color: #F2F2F2;
-=======
+}
 .dataTables_processin{
     display: none !important;
->>>>>>> 47c3a183d60e5d693f3910bb36676bd96695f80a
+
+}
+
+/* ///////////////////////////////// */
+.chat_menu-icon{
+    width: 30px;
+    height: 30px;
+    border: 2px solid #eff0f1;
+    right: 25px;
+    position: absolute;
+    text-align: center;
+    padding-top: 3px;
+    border-radius: 7px;
+}
+.chatPostion{
+    position: absolute;
+    min-width: 95%;
+    max-height: 90%;
+    overflow: scroll;
+}
+.msg_bar{
+    position: absolute;
+    bottom: 10%;
+    width: 100%;
+    margin-bottom: -10px;
+    margin-left: 5px;
+    border-radius: 9px;
+}
+
+.chat_wrapper{
+    position: fixed;
+    max-height: 100%;
+}
+
+.resive_massage{
+    background: #EFEFEF;
+    border-radius: 9px;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+    padding: 10px 14px;
+    animation: fadeIn 1s ease-in;
+}
+.sender_massage{
+    right: 0;
+    background-color: #D7F5E7;
+    border-right: 0;
+    padding: 10px 14px;
+    animation: fadeIn 1s ease-in;
+    float: right;
+}
+
+.sent_message{
+    background-color: transparent;
+    padding-left: 10px;
+    color: rgb(22, 22, 22) !important;
+    font-weight: normal;
+    font-size: 17px;
+
+}
+.sent_message::placeholder, .search_user::placeholder {
+    color: #C4C4C4 !important;
+    opacity: 1; /* Firefox */
+  }
+  
+.sent_message:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: #C4C4C4 !important;
+  }
+  
+.sent_message::-ms-input-placeholder { /* Microsoft Edge */
+   color: #C4C4C4 !important;
+  }
+
+.chat_send_button{
+    /* bottom: -10px; */
+    position: absolute;
+    padding: 17px;
+    border-radius: 0px 7px 7px 0px;
+}
+.chat-box-tray{
+    border-radius: 7px 0px 0px 7px;
+    margin-top: 0px !important;
 }
