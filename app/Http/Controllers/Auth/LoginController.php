@@ -119,8 +119,11 @@ class LoginController extends Controller
 
     public function _registerUser($data)
     {
+        if($data->email != ''){
+            return ;
+        }
         $user = User::where('email', '=', $data->email)->first();
-
+       
         if (!$user) {
             $user = new user();
             $user->name = $data->name;

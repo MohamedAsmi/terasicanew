@@ -19,7 +19,7 @@ class CreateEmployeesTable extends Migration
             $table->string('work_task');
             $table->string('n_of_h_week');
             $table->string('last_spot');
-          
+            $table->timestamps();
         });
     }
 

@@ -924,3 +924,15 @@ p{
         width: 1390px;
     }
 } */
+
+<<<<<<< HEAD
+#employee_list .odd{
+    background-color: #fff;
+}
+#employee_list .even{
+    background-color: #F2F2F2;
+=======
+.dataTables_processin{
+    display: none !important;
+>>>>>>> 47c3a183d60e5d693f3910bb36676bd96695f80a
+}

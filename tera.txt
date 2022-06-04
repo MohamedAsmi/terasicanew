@@ -15,3 +15,8 @@ Päivämäärä 	= Date
 Date 		= Clock time
 
 
+Employees
+Nimi                      = Name
+Työtehtävä                = Work task
+Tuntimäärä tällä viikolla = Number of hours this week
+Viimeksi paikalla         = Last spot
