@@ -953,7 +953,8 @@ p{
 }
 .chatPostion{
     position: absolute;
-    min-width: 95%;
+    min-width: 100%;
+    height: 90%;
     max-height: 90%;
     overflow: scroll;
 }
@@ -976,14 +977,14 @@ p{
     border-radius: 9px;
     transform: matrix(-1, 0, 0, 1, 0, 0);
     padding: 10px 14px;
-    animation: fadeIn 1s ease-in;
+    /* animation: fadeIn 1s ease-in; */
 }
 .sender_massage{
     right: 0;
     background-color: #D7F5E7;
-    border-right: 0;
+    border-radius: 9px;
     padding: 10px 14px;
-    animation: fadeIn 1s ease-in;
+    /* animation: fadeIn 1s ease-in; */
     float: right;
 }
 
@@ -1011,10 +1012,28 @@ p{
 .chat_send_button{
     /* bottom: -10px; */
     position: absolute;
-    padding: 17px;
+    padding: 9px;
     border-radius: 0px 7px 7px 0px;
+    background: #faa51a;
+    border: none;
 }
 .chat-box-tray{
     border-radius: 7px 0px 0px 7px;
     margin-top: 0px !important;
+}
+
+@media only screen and (max-width: 1400px) {
+    .msg_bar{
+        bottom: 15% !important;
+    }
+
+    .chatPostion{
+        height: 65% !important;
+    }
+}
+
+.select_chat{
+    background: #faa51a;
+    cursor: pointer;
+    color: #fff;
 }

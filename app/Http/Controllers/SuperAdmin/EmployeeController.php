@@ -7,6 +7,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\BaseController;
 use Illuminate\Support\Facades\DB;
+use App\User;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class EmployeeController extends BaseController
 {
@@ -54,13 +58,64 @@ class EmployeeController extends BaseController
             'EmployeeName' => 'required',
             'EmployeeEmail' => 'required|email',
         ]);
-        $data = [
-            'e_name' => $request->EmployeeName,
-            'e_email' => $request->EmployeeEmail,
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ];
-        DB::table('Employees')->insert($data);
+
+        $Employees = Employee::where('e_email', '=', $request->EmployeeEmail)->first();
+
+        if (!$Employees) {
+            $data = [
+                'e_name' => $request->EmployeeName,
+                'e_email' => $request->EmployeeEmail,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ];
+            DB::table('Employees')->insert($data);
+        }
+
+        $user = User::where('email', '=', $request->EmployeeEmail)->first();
+
+        if (!$user) {
+            $main = Str::random(10);
+            $passwod = Hash::make($main);
+
+            $user = new user();
+            $user->name = $request->EmployeeName;
+            $user->email = $request->EmployeeEmail;
+            $user->is_admin = 2;
+            $user->password = $passwod;
+            $user->save();
+
+    
+            $msg = '<tr><td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
+                <h1 style="margin: 0px; line-height: 140%; text-align: center; word-wrap: break-word; font-weight: normal; font-family: arial,helvetica,sans-serif; font-size: 22px;">
+                    Welcome to Terasica "' . $request->EmployeeName . '"
+                </h1></td></tr></tbody></table><table style="font-family:arial,helvetica,sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0"><tbody><tr>
+            <td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
+                <div style="line-height: 140%; text-align: left; word-wrap: break-word;">
+                    <p style="font-size: 14px; line-height: 140%;">This Email Include Your Account Details, So Please Keep It Safe.</p>
+                    <p style="font-size: 14px; line-height: 140%;">&nbsp;</p>
+                    <p style="font-size: 14px; line-height: 140%;"><span style="color: #f1c40f; font-size: 14px; line-height: 19.6px;">Email Address: ' . $request->EmployeeEmail . '</span></p>
+                    <p style="font-size: 14px; line-height: 140%;"><span style="color: #f1c40f; font-size: 14px; line-height: 19.6px;">Login Password: ' . $main . '</span></p>
+                    <p style="font-size: 14px; line-height: 140%;"><span style="color: #f1c40f; font-size: 14px; line-height: 19.6px;">Account Created Data:' . date('Y-m-d H:i:s') . '</span></p>';
+
+            $mailData = [
+                'Recipient' => $request->EmployeeEmail,
+                'FromEmail' => env('Mail_From_Address'),
+                'FromName' => env('MAIL_FROM_NAME'),
+                'subject' => 'Terasica Employee',
+                'body' => $msg
+            ];
+            $mail = Mail::send('emailTamplate', $mailData, function ($massage) use ($mailData) {
+                    $massage->to($mailData['Recipient'])
+                        ->from($mailData['FromEmail'], $mailData['FromName'])
+                        ->subject($mailData['subject']);
+            });
+          
+        } elseif (!$Employees) {
+            DB::table('users')
+                ->where('email', $request->EmployeeEmail)
+                ->update(['is_admin', 2]);
+        }
+
         return redirect()->back();
     }
 
@@ -105,7 +160,6 @@ class EmployeeController extends BaseController
 
         return redirect()->back();
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -129,6 +183,10 @@ class EmployeeController extends BaseController
         $id = explode('0.', $id);
         $employee = Employee::where('employee_id', $id[0])->delete();
         // $employee->delete();
-        return redirect()->back();
+
+        // DB::table('users')
+        // ->where('email', $request->EmployeeEmail)
+        // ->update(['is_admin', 0]);
+        // return redirect()->back();
     }
 }

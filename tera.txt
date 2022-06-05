@@ -20,3 +20,5 @@ Nimi                      = Name
 Työtehtävä                = Work task
 Tuntimäärä tällä viikolla = Number of hours this week
 Viimeksi paikalla         = Last spot
+
+chats

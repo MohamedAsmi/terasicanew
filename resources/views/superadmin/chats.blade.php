@@ -42,303 +42,87 @@
                         </div>
                     </div>
                 </div>
-                <div class="">
-                    <div class="row">
-                        <div class="friend-drawer friend-drawer--onhover col-12">
-                            <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/robocop.jpg" alt="">
-                            <div class="text">
-                                <h6>Robo Cop</h6>
-                                <p class="text-muted">Hey, you're arrested!</p>
-                            </div>
-                            <span class="time text-muted small">13:21</span>
-                        </div>
-                        <hr>
-                        <div class="friend-drawer friend-drawer--onhover col-12">
+                <div class="row">
+                    <div class="row contect_list col-12">
+                        @if( Auth::user()->is_admin == 2)
+                        @php
+                        $i = 0;
+                        @endphp
+                        @foreach($Employees as $Employee)
+
+                        @if($Employee->e_email != Auth::user()->email)
+                        @php
+                        if($i == 0){
+                        $cls = 'select_chat';
+                        }else{
+                        $cls = '';
+                        }
+                        $time = explode(' ',$Employee->last_spot);
+                        $time = explode(':',$time[1]);
+                        if($time[0] < 12){ $timeLine=$time[0].':'.$time[1].' am'; }else{ $timeLine=$time[0].':'.$time[1].' pm'; } $i++; @endphp <div class="friend-drawer chat_lst friend-drawer--onhover col-12 pr-0 {{ $cls }}" attr_main="{{$Employee->e_email}}" attr_id="{{ $Employee->employee_id }}">
                             <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/optimus-prime.jpeg" alt="">
                             <div class="text">
-                                <h6>Optimus</h6>
-                                <p class="text-muted">Wanna grab a beer?</p>
+                                <h6>{{$Employee->e_name}}</h6>
                             </div>
-                            <span class="time text-muted small">00:32</span>
-                        </div>
-                        <hr>
-                        <div class="friend-drawer friend-drawer--onhover col-12 ">
-                            <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/real-terminator.png" alt="">
-                            <div class="text">
-                                <h6>Skynet</h6>
-                                <p class="text-muted">Seen that canned piece of s?</p>
-                            </div>
-                            <span class="time text-muted small">13:21</span>
-                        </div>
-                        <hr>
-                        <div class="friend-drawer friend-drawer--onhover col-12">
-                            <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/termy.jpg" alt="">
-                            <div class="text">
-                                <h6>Termy</h6>
-                                <p class="text-muted">Im studying spanish...</p>
-                            </div>
-                            <span class="time text-muted small">13:21</span>
-                        </div>
-                        <hr>
-                        <div class="friend-drawer friend-drawer--onhover col-12">
-                            <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/rick.jpg" alt="">
-                            <div class="text">
-                                <h6>Richard</h6>
-                                <p class="text-muted">I'm not sure...</p>
-                            </div>
-                            <span class="time text-muted small">13:21</span>
-                        </div>
-                        <hr>
-                        <div class="friend-drawer friend-drawer--onhover col-12">
-                            <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/rachel.jpeg" alt="">
-                            <div class="text">
-                                <h6>XXXXX</h6>
-                                <p class="text-muted">Hi, wanna see something?</p>
-                            </div>
-                            <span class="time text-muted small">13:21</span>
-                        </div>
-                        <div class="friend-drawer friend-drawer--onhover col-12">
-                            <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/rachel.jpeg" alt="">
-                            <div class="text">
-                                <h6>XXXXX</h6>
-                                <p class="text-muted">Hi, wanna see something?</p>
-                            </div>
-                            <span class="time text-muted small">13:21</span>
-                        </div>
-                        <div class="friend-drawer friend-drawer--onhover col-12">
-                            <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/rachel.jpeg" alt="">
-                            <div class="text">
-                                <h6>XXXXX</h6>
-                                <p class="text-muted">Hi, wanna see something?</p>
-                            </div>
-                            <span class="time text-muted small">13:21</span>
-                        </div>
-                        <div class="friend-drawer friend-drawer--onhover col-12">
-                            <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/rachel.jpeg" alt="">
-                            <div class="text">
-                                <h6>XXXXX</h6>
-                                <p class="text-muted">Hi, wanna see something?</p>
-                            </div>
-                            <span class="time text-muted small">13:21</span>
-                        </div>
-                        <div class="friend-drawer friend-drawer--onhover col-12">
-                            <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/rachel.jpeg" alt="">
-                            <div class="text">
-                                <h6>XXXXX</h6>
-                                <p class="text-muted">Hi, wanna see something?</p>
-                            </div>
-                            <span class="time text-muted small">13:21</span>
-                        </div>
-                        <div class="friend-drawer friend-drawer--onhover col-12">
-                            <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/rachel.jpeg" alt="">
-                            <div class="text">
-                                <h6>XXXXX</h6>
-                                <p class="text-muted">Hi, wanna see something?</p>
-                            </div>
-                            <span class="time text-muted small">13:21</span>
-                        </div>
-                        <div class="friend-drawer friend-drawer--onhover col-12">
-                            <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/rachel.jpeg" alt="">
-                            <div class="text">
-                                <h6>XXXXX</h6>
-                                <p class="text-muted">Hi, wanna see something?</p>
-                            </div>
-                            <span class="time text-muted small">13:21</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-7">
-            <div class="" style="min-width: 100%; height: 90%;position: absolute;">
-                <div class="settings-tray primary-color-w mt-3">
-                    <div class="friend-drawer no-gutters">
-                        <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/robocop.jpg" alt="">
-                        <div class="text m-auto" style="margin-left: 10px !important;">
-                            <h5>Esko Esimerkki</h5>
-                            {{-- <p class="text-muted">Esko Esimerkki</p> --}}
-                        </div>
-                        <div class="chat_menu-icon">
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                        </div>
-                        {{-- <span class="settings-tray--right">
-                            <i class="material-icons">cached</i>
-                            <i class="material-icons">message</i>
-                            <i class="material-icons">menu</i>
-                        </span> --}}
-                    </div>
-                </div>
-                <div class="chat-panel chatPostion" style="min-width: 100%; height: 90%;">
-                    <div class="row no-gutters mt-3">
-                        <div class="col-1">
-                            <img src='{{ asset("img/Memoji Boys.png")}}' style='width: 60%; margin:10%;'>
-                        </div>
-                        <div class="col-md-10">
-                            <span class="resive_massage">
-                                Hello dude!
+                            <span class="time text-muted small" style="width: 80px;">
+                                {{$timeLine}}
                             </span>
-                        </div>
                     </div>
-                    <div class="row no-gutters mt-3">
-                        <div class="col-10 offset-1">
-                            <span class="sender_massage">
-                                Hello dude!
-                            </span>
-                        </div>
-                        <div class="col-1">
-                            <img src='{{ asset("img/Memoji Boys.png")}}' style='width: 60%; margin:10%; float: right;'>
-                        </div>
-                    </div>
-                    <div class="row no-gutters mt-3">
-                        <div class="col-10 offset-1">
-                            <span class="sender_massage">
-                                Hello dude!
-                            </span>
-                        </div>
-                        <div class="col-1">
-                            <img src='{{ asset("img/Memoji Boys.png")}}' style='width: 60%; margin:10%; float: right;'>
-                        </div>
-                    </div>
-                    <div class="row no-gutters mt-3">
-                        <div class="col-1">
-                            <img src='{{ asset("img/Memoji Boys.png")}}' style='width: 60%; margin:10%;'>
-                        </div>
-                        <div class="col-md-10">
-                            <span class="resive_massage">
-                                Hello dude!
-                            </span>
-                        </div>
-                    </div>
-                    <div class="row no-gutters mt-3">
-                        <div class="col-1">
-                            <img src='{{ asset("img/Memoji Boys.png")}}' style='width: 60%; margin:10%;'>
-                        </div>
-                        <div class="col-md-10">
-                            <span class="resive_massage">
-                                Hello dude!
-                            </span>
-                        </div>
-                    </div>
-                    <div class="row no-gutters mt-3">
-                        <div class="col-1">
-                            <img src='{{ asset("img/Memoji Boys.png")}}' style='width: 60%; margin:10%;'>
-                        </div>
-                        <div class="col-md-10">
-                            <span class="resive_massage">
-                                Hello dude!
-                            </span>
-                        </div>
-                    </div>
-                    <div class="row no-gutters mt-3">
-                        <div class="col-10 offset-1">
-                            <span class="sender_massage">
-                                Hello dude!
-                            </span>
-                        </div>
-                        <div class="col-1">
-                            <img src='{{ asset("img/Memoji Boys.png")}}' style='width: 60%; margin:10%; float: right;'>
-                        </div>
-                    </div>
-                    <div class="row no-gutters mt-3">
-                        <div class="col-10 offset-1">
-                            <span class="sender_massage">
-                                Hello dude!
-                            </span>
-                        </div>
-                        <div class="col-1">
-                            <img src='{{ asset("img/Memoji Boys.png")}}' style='width: 60%; margin:10%; float: right;'>
-                        </div>
-                    </div>
-                    <div class="row no-gutters mt-3">
-                        <div class="col-10 offset-1">
-                            <span class="sender_massage">
-                                Hello dude!
-                            </span>
-                        </div>
-                        <div class="col-1">
-                            <img src='{{ asset("img/Memoji Boys.png")}}' style='width: 60%; margin:10%; float: right;'>
-                        </div>
-                    </div>
-                    <div class="row no-gutters mt-3">
-                        <div class="col-10 offset-1">
-                            <span class="sender_massage">
-                                Hello dude!
-                            </span>
-                        </div>
-                        <div class="col-1">
-                            <img src='{{ asset("img/Memoji Boys.png")}}' style='width: 60%; margin:10%; float: right;'>
-                        </div>
-                    </div>
-                    <div class="row no-gutters mt-3">
-                        <div class="col-10 offset-1">
-                            <span class="sender_massage">
-                                Hello dude!
-                            </span>
-                        </div>
-                        <div class="col-1">
-                            <img src='{{ asset("img/Memoji Boys.png")}}' style='width: 60%; margin:10%; float: right;'>
-                        </div>
-                    </div>
-                    <div class="row no-gutters mt-3">
-                        <div class="col-10 offset-1">
-                            <span class="sender_massage">
-                                Hello dude!
-                            </span>
-                        </div>
-                        <div class="col-1">
-                            <img src='{{ asset("img/Memoji Boys.png")}}' style='width: 60%; margin:10%; float: right;'>
-                        </div>
-                    </div>
-                    <div class="row no-gutters mt-3">
-                        <div class="col-10 offset-1">
-                            <span class="sender_massage">
-                                Hello dude!
-                            </span>
-                        </div>
-                        <div class="col-1">
-                            <img src='{{ asset("img/Memoji Boys.png")}}' style='width: 60%; margin:10%; float: right;'>
-                        </div>
-                    </div>
-                    <div class="row no-gutters mt-3">
-                        <div class="col-10 offset-1">
-                            <span class="sender_massage">
-                                Hello dude!
-                            </span>
-                        </div>
-                        <div class="col-1">
-                            <img src='{{ asset("img/Memoji Boys.png")}}' style='width: 60%; margin:10%; float: right;'>
-                        </div>
-                    </div>
-                    <div class="row no-gutters mt-3" style="margin-bottom: 80px !important;">
-                        <div class="col-10 offset-1">
-                            <span class="sender_massage">
-                                Hello dude!
-                            </span>
-                        </div>
-                        <div class="col-1">
-                            <img src='{{ asset("img/Memoji Boys.png")}}' style='width: 60%; margin:10%; float: right;'>
-                        </div>
-                    </div>
-                </div>
+                    <hr class="w-100">
+                    @endif
+                    @endforeach
+                    @else
 
-            </div>
-            <div class="row msg_bar" style="height: 60px; width: 100%;">
-                <div class="col-10 pr-0" style="height: 100%;">
-                    <div class="row chat-box-tray" style="height: 60px;">
-                        <div class="col-1" style="padding: 4px;">
-                            <img src='{{ asset("img/Memoji Boys.png")}}' style='width: 100%; margin:10%; float: right;'>
-                        </div>
-                        <input type="text" class="sent_message" placeholder="Type your message here...">
-                    </div>
-
-                </div>
-                <div class="col-2 pl-0 primary-color-w" style="height: 100%;">
-                    <i class="fa fa-paper-plane chat_send_button"></i>
+                    @endif
                 </div>
             </div>
         </div>
     </div>
+    <div class="col-md-7">
+        <div class="" style="min-width: 100%; height: 90%;position: absolute;">
+            <div class="settings-tray primary-color-w mt-3">
+                <div class="friend-drawer no-gutters">
+                    <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/robocop.jpg" alt="">
+                    <div class="text m-auto" style="margin-left: 10px !important;">
+                        <h5>Esko Esimerkki</h5>
+                        {{-- <p class="text-muted">Esko Esimerkki</p> --}}
+                    </div>
+                    <div class="chat_menu-icon">
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                    {{-- <span class="settings-tray--right">
+                            <i class="material-icons">cached</i>
+                            <i class="material-icons">message</i>
+                            <i class="material-icons">menu</i>
+                        </span> --}}
+                </div>
+            </div>
+            <div class="chat-panel chatPostion" style="min-width: 100%; height: 90%;">
+
+            </div>
+        </div>
+        <div class="row msg_bar" style="height: 60px; width: 100%;">
+            <div class="col-10 pr-0" style="height: 100%;">
+                <div class="row chat-box-tray" style="height: 60px;">
+                    <div class="col-1" style="padding: 4px;">
+                        <img src='{{ asset("img/Memoji Boys.png")}}' style='width: 100%; margin:10%; float: right;'>
+                    </div>
+                    <input type="text" class="sent_message" name="response_msg" placeholder="Type your message here...">
+                    <input type="hidden" class="sent_message" name="employeeId">
+                    <input type="hidden" class="mainId" name="mainId">
+                </div>
+
+            </div>
+            <div class="col-2 pl-0 primary-color-w send_msg" style="height: 100%;">
+                <button type="submit" name="submit" class="chat_send_button"><i class="fa fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+    </div>
 
 </section>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<div id="chat_script">
+    <script src="{{ asset('js/superadmin/chat.js') }}"></script>
+</div>
 @endsection
