@@ -10,9 +10,11 @@
 .primary-text-cl-b {
     color: #000 !important;
 }
-.primary-color-tr{
+
+.primary-color-tr {
     background-color: transparent !important;
 }
+
 .primary-color-b {
     background-color: #000 !important;
 }
@@ -41,9 +43,11 @@
 .border-radius_6 {
     border-radius: 6px;
 }
+
 .border-radius_9 {
     border-radius: 9px;
 }
+
 /* /////////////  navbar style  ///////////////////// */
 #navbar_list {
     list-style: none;
@@ -712,6 +716,7 @@ input[type=number] {
         top: 10% !important;
         margin-left: 65%;
     }
+
     .play_button span span {
         display: none;
     }
@@ -884,7 +889,7 @@ input[type=number] {
     left: 20px;
 }
 
-.circle-logo{
+.circle-logo {
     display: block;
     width: 30px;
     height: 30px;
@@ -893,29 +898,35 @@ input[type=number] {
     border-radius: 50%;
     margin-right: 10px;
 }
-p{
+
+p {
     font-size: small;
 }
-.clock-st{
+
+.clock-st {
     font-size: large;
     /* margin: auto; */
     line-height: 50px;
     margin-bottom: 1px;
 }
-.inside-shadow{
-    box-shadow: 0 .5rem .5rem rgba(0,0,0,.15)inset !important;
-}
-.rounded-5{
-    border-radius: 15px;
-}
-.rounded-3{
-    border-radius: 10px;
-}
-.shadow-2{
-    box-shadow: 0 .3rem .2rem rgba(0,0,0,.15) !important;
+
+.inside-shadow {
+    box-shadow: 0 .5rem .5rem rgba(0, 0, 0, .15)inset !important;
 }
 
-.password_show i{
+.rounded-5 {
+    border-radius: 15px;
+}
+
+.rounded-3 {
+    border-radius: 10px;
+}
+
+.shadow-2 {
+    box-shadow: 0 .3rem .2rem rgba(0, 0, 0, .15) !important;
+}
+
+.password_show i {
     position: absolute;
     color: black;
     top: 0;
@@ -923,25 +934,28 @@ p{
     margin-top: 12px;
     cursor: pointer;
 }
+
 /* @media only screen and (min-width: 1390px) {
     .container-fluid{
         width: 1390px;
     }
 } */
 /* /////////////////////////////////////// */
-#employee_list .odd{
+#employee_list .odd {
     background-color: #fff;
 }
-#employee_list .even{
+
+#employee_list .even {
     background-color: #F2F2F2;
 }
-.dataTables_processin{
+
+.dataTables_processin {
     display: none !important;
 
 }
 
 /* ///////////////////////////////// */
-.chat_menu-icon{
+.chat_menu-icon {
     width: 30px;
     height: 30px;
     border: 2px solid #eff0f1;
@@ -951,14 +965,26 @@ p{
     padding-top: 3px;
     border-radius: 7px;
 }
-.chatPostion{
+
+.chatPostion {
     position: absolute;
     min-width: 100%;
     height: 90%;
     max-height: 90%;
     overflow: scroll;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
-.msg_bar{
+
+.chatPostion:hover, .chatPostion:active, .chatPostion:focus {
+    overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+.msg_bar {
     position: absolute;
     bottom: 10%;
     width: 100%;
@@ -967,19 +993,20 @@ p{
     border-radius: 9px;
 }
 
-.chat_wrapper{
+.chat_wrapper {
     position: fixed;
     max-height: 100%;
 }
 
-.resive_massage{
+.resive_massage {
     background: #EFEFEF;
     border-radius: 9px;
     transform: matrix(-1, 0, 0, 1, 0, 0);
     padding: 10px 14px;
     /* animation: fadeIn 1s ease-in; */
 }
-.sender_massage{
+
+.sender_massage {
     right: 0;
     background-color: #D7F5E7;
     border-radius: 9px;
@@ -988,7 +1015,7 @@ p{
     float: right;
 }
 
-.sent_message{
+.sent_message {
     background-color: transparent;
     padding-left: 10px;
     color: rgb(22, 22, 22) !important;
@@ -996,20 +1023,24 @@ p{
     font-size: 17px;
 
 }
+
 .sent_message::placeholder, .search_user::placeholder {
     color: #C4C4C4 !important;
-    opacity: 1; /* Firefox */
-  }
-  
-.sent_message:-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color: #C4C4C4 !important;
-  }
-  
-.sent_message::-ms-input-placeholder { /* Microsoft Edge */
-   color: #C4C4C4 !important;
-  }
+    opacity: 1;
+    /* Firefox */
+}
 
-.chat_send_button{
+.sent_message:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #C4C4C4 !important;
+}
+
+.sent_message::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #C4C4C4 !important;
+}
+
+.chat_send_button {
     /* bottom: -10px; */
     position: absolute;
     padding: 9px;
@@ -1017,22 +1048,23 @@ p{
     background: #faa51a;
     border: none;
 }
-.chat-box-tray{
+
+.chat-box-tray {
     border-radius: 7px 0px 0px 7px;
     margin-top: 0px !important;
 }
 
 @media only screen and (max-width: 1400px) {
-    .msg_bar{
+    .msg_bar {
         bottom: 15% !important;
     }
 
-    .chatPostion{
+    .chatPostion {
         height: 65% !important;
     }
 }
 
-.select_chat{
+.select_chat {
     background: #faa51a;
     cursor: pointer;
     color: #fff;
