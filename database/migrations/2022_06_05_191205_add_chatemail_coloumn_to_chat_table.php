@@ -14,7 +14,7 @@ class AddChatemailColoumnToChatTable extends Migration
     public function up()
     {
         Schema::table('chats', function (Blueprint $table) {
-            $table->string('chat_email')->after('receive_id');
+            $table->string('chat_email')->after('type');
         });
     }
 
