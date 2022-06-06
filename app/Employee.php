@@ -10,6 +10,7 @@ class Employee extends Model
         'employee_id',
         'e_name',
         'e_email',
+        'e_status',
         'e_tel',
         'work_task', 
         'n_of_h_week', 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Chat;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
@@ -26,6 +27,13 @@ Auth::routes(['verify' => true]);
 Route::get('/home', function () { 
     return view('user.home');
 });
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+Route::get('/chats', 'SuperAdmin\ChatsController@index');//viestit
+Route::post('/storeChat', 'SuperAdmin\ChatsController@store')->name("store.Chat");
+Route::get('/chatmap/{id}', 'SuperAdmin\ChatsController@list')->name("store.Chat");
+
+
 
 // Route::get('/charts', function () {
 //     return view('dashboard.charts');
@@ -55,7 +63,8 @@ Route::get('login/facebook/callback', 'auth\LoginController@facebookCallback');
 Route::group(['middleware' => 'auth', 'middleware'=>'verified'], function () {
     
     Route::get('/Super-Admin-Profile', 'SuperAdmin\ControlPanelController@index')->name('superadmin');
-    Route::get('/chats', 'SuperAdmin\ChatsController@index');//viestit
+
+
     Route::get('/Orders', 'SuperAdmin\OrderController@index');
     Route::get('/Reservations', 'SuperAdmin\ReservationController@index');
     Route::get('/Campaigns', 'SuperAdmin\CampaignController@index');
@@ -66,6 +75,9 @@ Route::group(['middleware' => 'auth', 'middleware'=>'verified'], function () {
     Route::get('/tablemap', 'SuperAdmin\TableMapController@index');
 
 
+    Route::get('/tem', function(){
+        return view('emailTamplate');
+    });
 
     // datatable
     Route::get('resevation/list', 'SuperAdmin\ReservationController@list')->name('reservation.list');
@@ -77,6 +89,7 @@ Route::group(['middleware' => 'auth', 'middleware'=>'verified'], function () {
     Route::post('/add_new/store', 'SuperAdmin\ReservationController@store')->name('reservation.store');
 
 
+    Route::get('/tablemap', 'SuperAdmin\ReservationController@list')->name('reservation.list');
 
     // Employee List
     Route::get('/employeetablemap', 'SuperAdmin\EmployeeController@list')->name('employee.list');
@@ -86,6 +99,10 @@ Route::group(['middleware' => 'auth', 'middleware'=>'verified'], function () {
     //add employee 
     Route::post('/employee/store','SuperAdmin\EmployeeController@store')->name('store.employee');
 
+
+
+    Route::put('/tablemap', 'SuperAdmin\ReservationController@list')->name('reservation.edit');
+    Route::put('/tablemapdelete', 'SuperAdmin\ReservationController@delete')->name('reservation.delete');
 
     //edit employee 
     Route::post('/employee/edit','SuperAdmin\EmployeeController@edit')->name('edit.employee');

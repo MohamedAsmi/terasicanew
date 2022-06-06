@@ -21,6 +21,14 @@
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <!-- Main content -->
 <section class="content">
+    <div class="row">
+        <ul>
+            @error('EmployeeName')<li class="text-danger">{{ $message }}</li>@enderror
+            @error('EmployeeEmail')<li class="text-danger">{{ $message }}</li>@enderror
+            @error('EmployeeTel')<li class="text-danger">{{ $message }}</li>@enderror
+
+        </ul>
+    </div>
     <div class="container-fluid">
         <!-- partial:index.partial.html -->
         <div class="drag-container"></div>
