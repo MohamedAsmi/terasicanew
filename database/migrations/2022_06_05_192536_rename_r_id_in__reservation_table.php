@@ -13,7 +13,7 @@ class RenameRIdInReservationTable extends Migration
      */
     public function up()
     {
-        Schema::table('Reservations', function (Blueprint $table) {
+        Schema::table('reservations', function (Blueprint $table) {
             $table->renameColumn('r_id', 'id');
         });
     }
@@ -25,7 +25,7 @@ class RenameRIdInReservationTable extends Migration
      */
     public function down()
     {
-        Schema::table('Reservations', function (Blueprint $table) {
+        Schema::table('reservations', function (Blueprint $table) {
             $table->renameColumn('id', 'r_id');
         });
     }
