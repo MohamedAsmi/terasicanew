@@ -1,4 +1,6 @@
  <!-- jQuery -->
+<script src="{{asset('js/vendor.min.js')}}"></script>
+{{-- <script src="{{asset('js/app.min.js')}}"></script> --}}
  <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
  <!-- jQuery UI 1.11.4 -->
  <script src="{{ asset('plugins/jquery-ui/jquery-ui.min.js') }}"></script>
@@ -37,7 +39,7 @@
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
   integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
  <!-- uPlot -->
- <script src="../../plugins/uplot/uPlot.iife.min.js"></script>
+ {{-- <script src="../../plugins/uplot/uPlot.iife.min.js"></script> --}}
  <!-- subcription -->
  <script src="{{ asset('plugins/fontawesome/js/all.min.js') }}"></script>
  <script src="{{ asset('js/custom.js') }}"></script>
@@ -58,79 +60,81 @@
  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
  <script src="{{ asset('js/common.js') }}"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+{{-- <script src="{{asset('js/common.js')}}"></script> --}}
  <script>
-     $(function() {
-         /* uPlot
-          * -------
-          * Here we will create a few charts using uPlot
-          */
+    //  $(function() {
+    //      /* uPlot
+    //       * -------
+    //       * Here we will create a few charts using uPlot
+    //       */
 
 
 
-         let data = [
-             [0],
-             [0],
-             [0]
-         ];
+    //      let data = [
+    //          [0],
+    //          [0],
+    //          [0]
+    //      ];
 
-         //--------------
-         //- AREA CHART -
-         //--------------
+    //      //--------------
+    //      //- AREA CHART -
+    //      //--------------
 
-         const optsAreaChart = {
-             scales: {
-                 x: {
-                     time: false,
-                     range: [0, 10],
-                 },
-                 y: {
-                     range: [0, 100],
-                 },
-             },
-             series: [{},
-                 {
-                     display: false,
-                     fill: 'rgba(60,141,188,0.7)',
-                     stroke: 'rgba(60,141,188,1)',
-                 },
-                 {
-                     stroke: '#c1c7d1',
-                     fill: 'rgba(210, 214, 222, .7)',
-                 },
-             ],
-         };
+    //      const optsAreaChart = {
+    //          scales: {
+    //              x: {
+    //                  time: false,
+    //                  range: [0, 10],
+    //              },
+    //              y: {
+    //                  range: [0, 100],
+    //              },
+    //          },
+    //          series: [{},
+    //              {
+    //                  display: false,
+    //                  fill: 'rgba(60,141,188,0.7)',
+    //                  stroke: 'rgba(60,141,188,1)',
+    //              },
+    //              {
+    //                  stroke: '#c1c7d1',
+    //                  fill: 'rgba(210, 214, 222, .7)',
+    //              },
+    //          ],
+    //      };
 
-         let areaChart = new uPlot(optsAreaChart, data, document.getElementById('areaChart'));
+    //      let areaChart = new uPlot(optsAreaChart, data, document.getElementById('areaChart'));
 
-         const optsLineChart = {
-             scales: {
-                 x: {
-                     time: false,
-                 },
-                 y: {
-                     range: [0, 100],
-                 },
-             },
-             series: [{},
-                 {
-                     fill: 'transparent',
-                     width: 5,
-                     stroke: 'rgba(60,141,188,1)',
-                 },
-                 {
-                     stroke: '#c1c7d1',
-                     width: 5,
-                     fill: 'transparent',
-                 },
-             ],
-         };
+    //      const optsLineChart = {
+    //          scales: {
+    //              x: {
+    //                  time: false,
+    //              },
+    //              y: {
+    //                  range: [0, 100],
+    //              },
+    //          },
+    //          series: [{},
+    //              {
+    //                  fill: 'transparent',
+    //                  width: 5,
+    //                  stroke: 'rgba(60,141,188,1)',
+    //              },
+    //              {
+    //                  stroke: '#c1c7d1',
+    //                  width: 5,
+    //                  fill: 'transparent',
+    //              },
+    //          ],
+    //      };
 
-         let lineChart = new uPlot(optsLineChart, data, document.getElementById('lineChart'));
+    //      let lineChart = new uPlot(optsLineChart, data, document.getElementById('lineChart'));
 
-         window.addEventListener("resize", e => {
+    //      window.addEventListener("resize", e => {
 
-         });
-     })
+    //      });
+    //  })
 
      $(function() {
          $("#example1").DataTable({

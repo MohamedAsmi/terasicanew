@@ -68,19 +68,24 @@ Route::group(['middleware' => 'auth', 'middleware'=>'verified'], function () {
 
 
     // datatable
-    Route::get('/tablemap', 'SuperAdmin\ReservationController@list')->name('reservation.list');
-<<<<<<< HEAD
+    Route::get('resevation/list', 'SuperAdmin\ReservationController@list')->name('reservation.list');
+    Route::get('/add_new', 'SuperAdmin\ReservationController@add_new')->name('reservation.add_new');
+    Route::get('/resevation/{id}', 'SuperAdmin\ReservationController@edit')->name('reservation.edit');
+    
+    Route::put('/resevation-update/{id}', 'SuperAdmin\ReservationController@update')->name('reservation.update');
+    Route::delete('/reservation/{id}', 'SuperAdmin\ReservationController@delete')->name('reservation.delete');
+    Route::post('/add_new/store', 'SuperAdmin\ReservationController@store')->name('reservation.store');
+
+
+
     // Employee List
     Route::get('/employeetablemap', 'SuperAdmin\EmployeeController@list')->name('employee.list');
+    
     Route::get('/employee/delete/{id}','SuperAdmin\EmployeeController@destroy')->name('delete.employee');
 
     //add employee 
     Route::post('/employee/store','SuperAdmin\EmployeeController@store')->name('store.employee');
-=======
-    Route::put('/tablemap', 'SuperAdmin\ReservationController@list')->name('reservation.edit');
-    Route::put('/tablemapdelete', 'SuperAdmin\ReservationController@delete')->name('reservation.delete');
 
->>>>>>> 47c3a183d60e5d693f3910bb36676bd96695f80a
 
     //edit employee 
     Route::post('/employee/edit','SuperAdmin\EmployeeController@edit')->name('edit.employee');

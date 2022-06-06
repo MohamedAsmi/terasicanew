@@ -33,7 +33,7 @@
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css'>
     <link re href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <!-- uPlot -->
-    <link rel="stylesheet" href="{{ asset('plugins/uplot/uPlot.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('plugins/uplot/uPlot.min.css') }}"> --}}
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,4 +44,6 @@
     <link rel='stylesheet' href="{{ asset('css/custom_css.css') }}">
     <!-- slider -->
     <link rel="stylesheet" href="{{asset('css/flickity.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
 </head>

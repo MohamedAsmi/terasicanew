@@ -23,8 +23,20 @@ $(document).ready(async function () {
         },
     ];
 
-    let table = await initDataTable($('#reservation-list'), tbl1);
+    let table = await initDataTable($('#reservation_list_update'), tbl1);
 
 
 
+});
+
+
+
+$(document).on('click', '.delete', function () {
+    $('#delete-modal .modal-title').html('Delete Time Inflation Code');
+    $('#delete-modal #ajax-form').attr('method', 'DELETE');
+    $('#delete-modal #ajax-form').attr('action', $(this).attr('data-url'));
+    $('#delete-modal #ajax-form').attr('data-table', 'reservation_list_update');
+    let modal = new bootstrap.Modal(document.getElementById('delete-modal'));
+    modal.show();
+    
 });
