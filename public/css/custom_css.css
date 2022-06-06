@@ -1064,6 +1064,12 @@ p {
     }
 }
 
+.chatPostion .select_chat .text, .chatPostion .select_chat span {
+    margin: auto;
+    margin-left: 10px;
+    color: #fff !important;
+}
+
 .select_chat {
     background: #faa51a;
     cursor: pointer;

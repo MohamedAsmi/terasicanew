@@ -38,6 +38,7 @@ $('.no-gutters h5').text($('.select_chat h6').text());
 $('[name="mainId"]').val($('.select_chat').attr('attr_main'));
 
 $('.chat_lst').on('click', function () {
+    $('.chat-panel.chatPostion').html('');
     $('.chat_lst').each(function () {
         $(this).removeClass('select_chat');
     })
@@ -56,36 +57,39 @@ function Getchar() {
         type: 'GET',
         url: baseurl + 'chatmap/' + $('.select_chat').attr('attr_id'),
         success: function (data) {
-            MsgArr = [];
-            $.each(data, function (index, value) {
-                if (index == 'resive') {
-                    for (let r = 0; r < value.length; r++) {
-                        MsgArr[value[r]['date']] = '<div class="row no-gutters msg mt-3"><div class="col-1"><img src="' + baseurl + 'img/Memoji Boys.png" style="width: 60%; margin:10%;"></div><div class="col-md-10"><span class="resive_massage">' + value[r]['message'] + '</span></div></div>';
+            if (data['time_schedule'].length > 1) {
+                MsgArr = [];
+                $.each(data, function (index, value) {
+                    if (index == 'resive') {
+                        for (let r = 0; r < value.length; r++) {
+                            MsgArr[value[r]['date']] = '<div class="row no-gutters msg mt-3"><div class="col-1 logoUpdate"><img src="' + baseurl + 'img/Memoji Boys.png" style="width: 60%; margin:10%;"></div><div class="col-md-10"><span class="resive_massage">' + value[r]['message'] + '</span></div></div>';
+                        }
+                    } else if (index == 'sender') {
+                        for (let s = 0; s < value.length; s++) {
+                            MsgArr[value[s]['date']] = '<div class="row no-gutters msg mt-3"><div class="col-10 offset-1"><span class="sender_massage">' + value[s]['message'] + '</span></div><div class="col-1 logoUpdate"><img src="' + baseurl + 'img/Memoji Boys.png" style="width: 60%; margin:10%; float: right;"></div></div>';
+                        }
                     }
-                } else if (index == 'sender') {
-                    for (let s = 0; s < value.length; s++) {
-                        MsgArr[value[s]['date']] = '<div class="row no-gutters msg mt-3"><div class="col-10 offset-1"><span class="sender_massage">' + value[s]['message'] + '</span></div><div class="col-1"><img src="' + baseurl + 'img/Memoji Boys.png" style="width: 60%; margin:10%; float: right;"></div></div>';
+                });
+                var chat_msg = '';
+                for (let time = 0; time < data['time_schedule'].length; time++) {
+
+                    if (typeof data['time_schedule'][time] === 'string') {
+                        chat_msg += MsgArr[data['time_schedule'][time]];
                     }
-                }
-            });
-            var chat_msg = '';
-            for (let time = 0; time < data['time_schedule'].length; time++) {
 
-                if (typeof data['time_schedule'][time] === 'string') {
-                    chat_msg += MsgArr[data['time_schedule'][time]];
                 }
+                $('.chat-panel.chatPostion').html(chat_msg);
+                $(".no-gutters.msg").last().attr('id', 'lastmessage');
 
+                var container = $('.chatPostion');
+                var scrollTo = $("#lastmessage");
+                var position = scrollTo.offset().top - container.offset().top + container.scrollTop();
+                container.animate({
+                    scrollTop: position
+                });
             }
-            $('.chat-panel.chatPostion').html(chat_msg);
-            $(".no-gutters.msg").last().attr('id', 'lastmessage');
-            
-            var container = $('.chatPostion');
-            var scrollTo = $("#lastmessage");
-            var position = scrollTo.offset().top - container.offset().top + container.scrollTop();
-            container.animate({
-                scrollTop: position
-            });
         }
+
     })
 }
 

@@ -30,9 +30,10 @@ class EmployeeController extends BaseController
         return view('superadmin.Employees');
     }
 
-    public function list(Request $request)
+    public function list()
     {
-        $employee = DB::table('employees')->select('employee_id', 'e_name', 'work_task', 'n_of_h_week', 'last_spot')->get();
+        $employee = DB::table('employees')->select('employee_id', 'e_name', 'work_task', 'n_of_h_week', 'last_spot')->where('employee_id','>','1')->get();
+    
         return response()->json($employee);
     }
     /**

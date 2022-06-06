@@ -44,7 +44,7 @@
                 </div>
                 <div class="row">
                     <div class="row contect_list col-12">
-                        @if( Auth::user()->is_admin == 2)
+                        @if( Auth::user()->is_admin == 2 || Auth::user()->is_admin == 1)
                         @php
                         $i = 0;
                         @endphp
