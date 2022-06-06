@@ -100,7 +100,6 @@ Route::group(['middleware' => 'auth', 'middleware'=>'verified'], function () {
 
 
 
-    Route::get('/tablemap', 'SuperAdmin\ReservationController@list')->name('reservation.list');
 
     // Employee List
     Route::get('/employeetablemap', 'SuperAdmin\EmployeeController@list')->name('employee.list');
@@ -112,8 +111,6 @@ Route::group(['middleware' => 'auth', 'middleware'=>'verified'], function () {
 
 
 
-    Route::put('/tablemap', 'SuperAdmin\ReservationController@list')->name('reservation.edit');
-    Route::put('/tablemapdelete', 'SuperAdmin\ReservationController@delete')->name('reservation.delete');
 
     //edit employee 
     Route::post('/employee/edit','SuperAdmin\EmployeeController@edit')->name('edit.employee');
