@@ -79,14 +79,25 @@ Route::group(['middleware' => 'auth', 'middleware'=>'verified'], function () {
         return view('emailTamplate');
     });
 
-    // datatable
+    // resevation datatable
     Route::get('resevation/list', 'SuperAdmin\ReservationController@list')->name('reservation.list');
-    Route::get('/add_new', 'SuperAdmin\ReservationController@add_new')->name('reservation.add_new');
+    Route::get('/reservation_add_new', 'SuperAdmin\ReservationController@add_new')->name('reservation.add_new');
     Route::get('/resevation/{id}', 'SuperAdmin\ReservationController@edit')->name('reservation.edit');
-    
     Route::put('/resevation-update/{id}', 'SuperAdmin\ReservationController@update')->name('reservation.update');
     Route::delete('/reservation/{id}', 'SuperAdmin\ReservationController@delete')->name('reservation.delete');
-    Route::post('/add_new/store', 'SuperAdmin\ReservationController@store')->name('reservation.store');
+    Route::post('/reservation_add_new/store', 'SuperAdmin\ReservationController@store')->name('reservation.store');
+
+
+    // product datatable
+    Route::get('product/list', 'SuperAdmin\ProductController@list')->name('product.list');
+    Route::get('/product_add_new', 'SuperAdmin\ProductController@add_new')->name('product.add_new');
+    Route::post('/product_add_new/store', 'SuperAdmin\ProductController@store')->name('product.store');
+    Route::delete('/product/{id}', 'SuperAdmin\ProductController@delete')->name('product.delete');
+    Route::get('/product/{id}', 'SuperAdmin\ProductController@edit')->name('product.edit');
+    Route::put('/product-update/{id}', 'SuperAdmin\ProductController@update')->name('product.update');
+
+
+
 
 
     Route::get('/tablemap', 'SuperAdmin\ReservationController@list')->name('reservation.list');
