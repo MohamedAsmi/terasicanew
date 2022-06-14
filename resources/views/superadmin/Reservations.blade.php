@@ -1,6 +1,11 @@
 @extends('dashboard.master')
 @section('page-title', '| Body')
 @section('body')
+<style>
+    div .dataTables_info{
+        display: none;
+    }
+</style>
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
@@ -29,7 +34,7 @@
                         <button class="bg-light download_button primary-color-w add_employee"><i class="fa-solid fa-plus"></i> Kutsu työntekijä</button>
                     </a>
                 </div>
-               
+
             </div>
             <table id="reservation_list_update" class="table dt-responsive nowrap w-100 table-sm"
                 data-url="{{ route('reservation.list') }}">

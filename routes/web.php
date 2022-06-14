@@ -24,7 +24,7 @@ Route::get('/', function () {
 
 
 Auth::routes(['verify' => true]);
-Route::get('/home', function () { 
+Route::get('/home', function () {
     return view('user.home');
 });
 
@@ -61,7 +61,7 @@ Route::get('login/facebook/callback', 'auth\LoginController@facebookCallback');
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 Route::group(['middleware' => 'auth', 'middleware'=>'verified'], function () {
-    
+
     Route::get('/Super-Admin-Profile', 'SuperAdmin\ControlPanelController@index')->name('superadmin');
 
 
@@ -87,6 +87,10 @@ Route::group(['middleware' => 'auth', 'middleware'=>'verified'], function () {
     Route::delete('/reservation/{id}', 'SuperAdmin\ReservationController@delete')->name('reservation.delete');
     Route::post('/reservation_add_new/store', 'SuperAdmin\ReservationController@store')->name('reservation.store');
 
+    Route::get('/shapes/{id}', 'SuperAdmin\TableMapController@edit')->name('shapes.edit');
+    Route::put('/shapes-update/{id}', 'SuperAdmin\TableMapController@update')->name('shapes.update');
+    Route::delete('/shapes/{id}', 'SuperAdmin\TableMapController@delete')->name('shapes.delete');
+
 
     // product datatable
     Route::get('product/list', 'SuperAdmin\ProductController@list')->name('product.list');
@@ -103,29 +107,29 @@ Route::group(['middleware' => 'auth', 'middleware'=>'verified'], function () {
 
     // Employee List
     Route::get('/employeetablemap', 'SuperAdmin\EmployeeController@list')->name('employee.list');
-    
+
     Route::get('/employee/delete/{id}','SuperAdmin\EmployeeController@destroy')->name('delete.employee');
 
-    //add employee 
+    //add employee
     Route::post('/employee/store','SuperAdmin\EmployeeController@store')->name('store.employee');
 
 
 
 
-    //edit employee 
+    //edit employee
     Route::post('/employee/edit','SuperAdmin\EmployeeController@edit')->name('edit.employee');
 
     Route::get('/edit_design_file', function () {
         return view('superadmin.edit_design_file');
     });
-    
-    
-   
-
-    
 
 
-    
+
+
+
+
+
+
     ////////////////////////// settings ///////////////////////////////////////////////////
 
     Route::get('/qr-koodit', function () {
@@ -161,7 +165,7 @@ Route::group(['middleware' => 'auth', 'middleware'=>'verified'], function () {
     Route::get('/kolloko', function () {
         return view('superadmin.settings.kolloko');
     });
-    
+
     Route::get('/time_monitorings', function () {
         return view('superadmin.settings.time_monitorings');
     });
@@ -176,21 +180,21 @@ Route::group(['middleware' => 'auth', 'middleware'=>'verified'], function () {
     Route::get('/profile', function () {
         return view('profile.home');
     });//Hallintapaneeli
-    
+
     Route::get('/todo', function () {
         return view('dashboard.todo');
     });//order view
 
-    
 
-   
-    
-    
-    
-    
 
-  
-    
+
+
+
+
+
+
+
+
 
 
     //////////////////////////////////////////////////
@@ -203,27 +207,27 @@ Route::group(['middleware' => 'auth', 'middleware'=>'verified'], function () {
     Route::get('/summary-checkout', function () {
         return view('user_view.summary-checkout');
     });
-    
+
 
     Route::get('/chart', function () {
         return view('dashboard.charts');
     });
-    
-    
-   
+
+
+
     Route::get('/order_semmary', function () {
         return view('dashboard.order_summery_client');
     });
     Route::get('/order_semmary_merchain', function () {
         return view('dashboard.order_summery_merchain');
     });
-    
-  
 
- 
-    
 
-    
+
+
+
+
+
 });
 ///////////////////////////////////////Super Admin Route/////////////////////////////////////////////////
 
@@ -249,8 +253,8 @@ Route::group(['middleware' => 'is_admin' ,'middleware' => 'verified'], function 
         return view('dashboard.charts');
     });
 
-  
-   
+
+
     Route::get('/order_semmary', function () {
         return view('dashboard.order_summery_client');
     });
@@ -261,12 +265,12 @@ Route::group(['middleware' => 'is_admin' ,'middleware' => 'verified'], function 
         return view('dashboard.todo');
     });
 
-   
 
 
 
 
-  
+
+
 });
 //////////////////////////////////////Admin Route/////////////////////////////////////////////
 
@@ -286,7 +290,7 @@ Route::group(['middleware' => 'is_user' ,'middleware' => 'verified'], function (
         // return view('user_view.home');
     });
 
-   
+
     Route::get('/frame', function () {
         return view('profile.frame');
         // return view('user_view.home');
@@ -325,5 +329,6 @@ Route::group(['middleware' => 'is_user' ,'middleware' => 'verified'], function (
     Route::get('/subscription/summary', function () {
         return view('subscription.index');
     });
+
 });
 ///////////////////////////////////////////////////////////////////////////////////////////////////

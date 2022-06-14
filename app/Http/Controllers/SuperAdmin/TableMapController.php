@@ -5,6 +5,8 @@ namespace App\Http\Controllers\SuperAdmin;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\BaseController;
 use Illuminate\Http\Request;
+use App\Reservation;
+use App\Http\Requests\SystemAdmin\UpdateResevationRequest;
 
 class TableMapController extends BaseController
 {
@@ -17,7 +19,7 @@ class TableMapController extends BaseController
     {
         $this->middleware('is_superadmin');
     }
-    
+
     public function index()
     {
         return view('superadmin.tablemap');
@@ -63,7 +65,17 @@ class TableMapController extends BaseController
      */
     public function edit($id)
     {
-        //
+        $resevations=Reservation::getById($id);
+        return view('superadmin.models.shapes.edit')->with([
+            'resevations' => $resevations
+        ]);
+
+    }
+
+    public function delete($id)
+    {
+        Reservation::deleteById($id);
+        return self::response('success', 'Deleted!');
     }
 
     /**
@@ -73,9 +85,15 @@ class TableMapController extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateResevationRequest $request, $id)
     {
-        //
+        Reservation::updateById($id, $request->except('_token'));
+        return self::response('success', 'Updated!');
+        // return self::redirectWithResultAndMessage(
+        //     'reservation-update',
+        //     'success',
+        //     'reservation Update Successfi!'
+        // );
     }
 
     /**
