@@ -2,6 +2,7 @@ const baseURL = $('meta[name="base_url"]').attr('content');
 const csrfToken = $('meta[name="csrf_token"]').attr('content');
 
 $(document).on('submit', '#ajax-form', async function (e) {
+    
     e.preventDefault();
     let url = $(this).attr('action');
     let method = $(this).attr('method');
@@ -22,7 +23,8 @@ $(document).on('submit', '#ajax-form', async function (e) {
     try {
         let response = await doAjaxPost(url, method, data, file);
 
-        let formModal = $(this).closest('.modal')
+        let formModal = $(this).closest('.modal');
+        
         if (formModal.length != 0) {
             formModal.modal('hide');
         }
@@ -31,8 +33,11 @@ $(document).on('submit', '#ajax-form', async function (e) {
         if (notification == 'div') {
             $('div#message-area').html(message);
         } else {
+
+
             notify(response.message, response.result);
         }
+
 
         $('table#' + table).DataTable().ajax.reload();
         resetButton(btn, originalText);
@@ -48,13 +53,18 @@ $(document).on('submit', '#ajax-form', async function (e) {
 });
 
 $(document).on('submit', 'form', function () {
+
     let btn = $(this).find('button[type=submit]');
     let loadingText = btn.attr('data-loading-text');
-    loadButton(btn, loadingText);
+    let loaderNeeded = btn.attr('data-loader-needed');
+
+    if (loaderNeeded != 'false')
+        loadButton(btn, loadingText);
 });
 
 $(document).on('click', '.load-modal', function () {
-    let url = $(this).attr('data-url')
+    let url = $(this).attr('data-url');
+    console.log(url);
     $('#modal').load(url, function () {
         let modal = new bootstrap.Modal(document.getElementById('modal'));
         modal.show();
@@ -68,12 +78,12 @@ $(document).on('shown.bs.modal', '.modal', function () {
     });
 });
 
-
-
-
 function initDataTable(table, columns, formId, aaSorting = [],
     columnDefs = [], pageLength = 5,
-    lengthMenu = [[5, 50, 100, 500, 1000, -1], [5, 50, 100, 500, 1000, 'All']]) {
+    lengthMenu = [
+        [5, 50, 100, 500, 1000, -1],
+        [5, 50, 100, 500, 1000, 'All']
+    ]) {
     let url = table.attr('data-url');
 
     return new Promise(function (resolve, reject) {
@@ -93,13 +103,17 @@ function initDataTable(table, columns, formId, aaSorting = [],
             aaSorting: aaSorting,
             columns: columns,
             responsive: true,
+            processing: false,
             language: {
                 searchPlaceholder: 'Search...',
                 sSearch: '',
                 lengthMenu: '_MENU_ items/page',
             },
             initComplete: function () {
-                $('.dataTables_length select').select2({ minimumResultsForSearch: Infinity });
+                
+                $('.dataTables_length select').select2({
+                    minimumResultsForSearch: Infinity
+                });
                 resolve(t);
             },
             fnDrawCallback: function () {
@@ -107,7 +121,6 @@ function initDataTable(table, columns, formId, aaSorting = [],
                     table.find('[data-toggle="tooltip"]').tooltip();
                 }
             }
-
         });
     });
 
@@ -194,7 +207,7 @@ let showMsg = (msg, bold, classType) => {
 
 let loadModal = function (modalId, url) {
     $('#' + modalId).load(url, function () {
-        $('#' + modalId).modal();
+        $('#' + modalId).modal('show');
     });
 };
 
@@ -230,4 +243,3 @@ var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggl
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl)
 })
-

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\BaseController;
 use App\Reservation;
 use Yajra\DataTables\DataTables;
+use App\Http\Requests\SystemAdmin\UpdateResevationRequest;
+
 class ReservationController extends BaseController
 {
     /**
@@ -41,9 +43,17 @@ class ReservationController extends BaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UpdateResevationRequest $request)
     {
-        //
+        Reservation::insertRow([
+            'r_name' => $request->r_name,
+            'num_of_book' => $request->num_of_book,
+            'date' => $request->date,
+            'clock_time' => $request->clock_time,
+        ]);
+
+        return self::response('success', 'Created!');
+
     }
 
     /**
@@ -65,7 +75,15 @@ class ReservationController extends BaseController
      */
     public function edit($id)
     {
-        //
+        $resevations=Reservation::getById($id);
+        return view('superadmin.models.reservation.edit')->with([
+            'resevations' => $resevations
+        ]);
+
+    }
+    public function add_new()
+    {
+        return view('superadmin.models.reservation.add_new');
     }
 
     /**
@@ -75,9 +93,15 @@ class ReservationController extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateResevationRequest $request, $id)
     {
-        //
+        Reservation::updateById($id, $request->except('_token'));
+        return self::response('success', 'Updated!');
+        // return self::redirectWithResultAndMessage(
+        //     'reservation-update',
+        //     'success',
+        //     'reservation Update Successfi!'
+        // );
     }
 
     /**
@@ -92,29 +116,28 @@ class ReservationController extends BaseController
     }
     public function list(){
         $model =Reservation::get();
-        // dd($model);
-        // $rows = DB::table('client_user_clients as ec')
-            // ->join('users as u', 'ec.client_user_id', '=', 'u.id')
-            // ->join('clients as c', 'ec.client_id', '=', 'c.id')
-            // ->where('c.status', BaseModel::STATUS_ACTIVE)
-            // ->select(
-            //     'ec.*',
-            //     'u.first_name as employee_name',
-            //     'u.last_name as last_name',
-            //     'c.client_name as client_name',
-            //     'c.code as client_code'
-            // );
 
         return DataTables::of($model)
         ->addColumn('edit', function ($model) {
-            return '<a href="' . route('reservation.edit', ['id' => $model->r_id]) . '" class="btn btn-success" title="Edit" data-id="' . $model->r_id . '"><i class="fas fa-edit"></i></a>';
+            return '<a href="javascript:void(0)" class="load-modal" title="Edit"
+                        data-url="' . route('reservation.edit', ['id' => $model->id]) . '">
+                        <i class="fas fa-edit"></i>
+                    </a>';
         })
         ->addColumn('delete', function ($model) {
-            return '<a href="' . route('reservation.delete', ['id' => $model->r_id]) . '" class="btn btn-danger" title="Edit" data-id="' . $model->r_id . '"><i class="fas fa-trash"></i></a>';
+            return '<a href="javascript:void(0)" class="delete" title="Delete"
+                        data-url="' . route('reservation.delete', ['id' => $model->id]) . '">
+                            <i class="fas fa-trash text-danger"></i>
+                        </a>';
         })
 
         ->rawColumns(['edit','delete'])
         ->addIndexColumn()
         ->make(true);
+    }
+     public function delete($id)
+    {
+        Reservation::deleteById($id);
+        return self::response('success', 'Deleted!');
     }
 }

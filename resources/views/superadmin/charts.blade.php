@@ -143,7 +143,7 @@
                                     </div>
                                     <div class="row mt-4">
                                         <div class="col-4" style="width:100%;">
-                                            <img src="dist/img/user2-160x160.jpg" width="30" height="30"
+                                            <img src="dist/img/a.png" width="30" height="30"
                                                 class="rounded-circle mb-2"
                                                 style="width:auto;height: 53px;transform: rotate(5deg);">
                                         </div>
@@ -155,7 +155,7 @@
                                     </div>
                                     <div class="row mt-4">
                                         <div class="col-4" style="width:100%;">
-                                            <img src="dist/img/user2-160x160.jpg" width="30" height="30"
+                                            <img src="dist/img/a.png" width="30" height="30"
                                                 class="rounded-circle mb-2"
                                                 style="width:auto;height: 53px;transform: rotate(5deg);">
                                         </div>
@@ -167,7 +167,7 @@
                                     </div>
                                     <div class="row mt-4 mb-4">
                                         <div class="col-4" style="width:100%;">
-                                            <img src="dist/img/user2-160x160.jpg" width="30" height="30"
+                                            <img src="dist/img/a.png" width="30" height="30"
                                                 class="rounded-circle mb-2"
                                                 style="width:auto;height: 53px;transform: rotate(5deg);">
                                         </div>
@@ -184,7 +184,42 @@
                                             <h3 style="font-weight:900;">Uudet Viestit</h3>
                                         </div>
                                     </div>
+                                    <div class="row mt-4">
+                                        <div class="col-4" style="width:100%;">
+                                            <img src="dist/img/a.png" width="30" height="30"
+                                                class="rounded-circle mb-2"
+                                                style="width:auto;height: 53px;transform: rotate(5deg);">
+                                        </div>
+                                        <div class="col-8" style="width:100%;">
+                                            <p style="font-size:20px;font-weight:600;">Elli Esimerkki</p>
+                                            <p style="font-size:20px;color:grey;">Onko tilaus tehty?</p>
 
+                                        </div>
+                                    </div>
+                                    <div class="row mt-4">
+                                        <div class="col-4" style="width:100%;">
+                                            <img src="dist/img/a.png" width="30" height="30"
+                                                class="rounded-circle mb-2"
+                                                style="width:auto;height: 53px;transform: rotate(5deg);">
+                                        </div>
+                                        <div class="col-8" style="width:100%;">
+                                            <p style="font-size:20px;font-weight:600;">Elli Esimerkki</p>
+                                            <p style="font-size:20px;color:grey;">Onko tilaus tehty?</p>
+
+                                        </div>
+                                    </div>
+                                    <div class="row mt-4 mb-4">
+                                        <div class="col-4" style="width:100%;">
+                                            <img src="dist/img/a.png" width="30" height="30"
+                                                class="rounded-circle mb-2"
+                                                style="width:auto;height: 53px;transform: rotate(5deg);">
+                                        </div>
+                                        <div class="col-8" style="width:100%;">
+                                            <p style="font-size:20px;font-weight:600;">Elli Esimerkki</p>
+                                            <p style="font-size:20px;color:grey;">Onko tilaus tehty?</p>
+
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -195,8 +230,8 @@
                         <div class="row">
                             <div class="text-center mt-3 pb-3 mb-3 d-flex" style="width:100%;">
                                 <div class="image" style="width:100%;">
-                                    <img src="dist/img/user2-160x160.jpg" width="30" height="30" class="rounded-circle mb-2"
-                                        style="width:auto;height: 179px;outline: #faa51a  solid 13px;transform: rotate(5deg);">
+                                    <img src="dist/img/a.png" width="30" height="30" class="rounded-circle mb-2"
+                                        style="width:auto;height: 179px;outline: #faa51a  solid 0px;transform: rotate(5deg);background-color: #faa51a;">
                                     <p class="mt-4" style="font-size: 37px;font-weight:900;">Justus Berner</p>
                                     <p style="font-size: 20px;font-weight:400;color:grey;">CEO Terassikesä
                                     </p>
@@ -212,7 +247,7 @@
                         </div>
                         <div class="row">
                             <div class="col-3" style="width:100%;">
-                                <img src="dist/img/user2-160x160.jpg" width="30" height="30" class="rounded-circle mb-2"
+                                <img src="dist/img/a.png" width="30" height="30" class="rounded-circle mb-2"
                                     style="width:auto;height: 53px;transform: rotate(5deg);">
                             </div>
                             <div class="col-9" style="width:100%;">
@@ -223,7 +258,7 @@
                         </div>
                         <div class="row mt-4">
                             <div class="col-3" style="width:100%;">
-                                <img src="dist/img/user2-160x160.jpg" width="30" height="30" class="rounded-circle mb-2"
+                                <img src="dist/img/a.png" width="30" height="30" class="rounded-circle mb-2"
                                     style="width:auto;height: 53px;transform: rotate(5deg);">
                             </div>
                             <div class="col-9" style="width:100%;">
@@ -234,7 +269,7 @@
                         </div>
                         <div class="row mt-4">
                             <div class="col-3" style="width:100%;">
-                                <img src="dist/img/user2-160x160.jpg" width="30" height="30" class="rounded-circle mb-2"
+                                <img src="dist/img/a.png" width="30" height="30" class="rounded-circle mb-2"
                                     style="width:auto;height: 53px;transform: rotate(5deg);">
                             </div>
                             <div class="col-9" style="width:100%;">
@@ -255,7 +290,7 @@
     </section>
     <!-- /.content -->
     <script>
-        var options = {
+        /*var options = {
             series: [{
                 data: [400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380]
             }],
@@ -266,10 +301,8 @@
             plotOptions: {
                 bar: {
                     borderRadius: 4,
-
                 }
             },
-
             fill: {
                 type: 'gradient',
                 gradient: {
@@ -290,6 +323,68 @@
                     'United States', 'China', 'Germany'
                 ],
             }
+        };
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+        */
+        var options = {
+          series: [{
+          name: 'Marine Sprite',
+          data: [44, 55, 41, 37, 22, 43, 21, 30, 40, 36, 28, 32, 23, 13, 5]
+        }, {
+          name: 'Striking Calf',
+          data: [53, 32, 33, 52, 13, 43, 32, 25, 22, 20, 21, 24, 20, 12, 10]
+        }, {
+          name: 'Tank Picture',
+          data: [12, 17, 11, 9, 15, 11, 20, 15, 22, 43, 21, 30, 25, 24, 15]
+        }, {
+          name: 'Bucket Slope',
+          data: [9, 7, 5, 8, 6, 9, 4, 7, 5, 4, 6, 8, 5, 12, 15]
+        }, {
+          name: 'Reborn Kid',
+          data: [25, 12, 19, 32, 25, 24, 10, 12, 22, 43, 21, 30, 24, 21, 18]
+        }],
+          chart: {
+          type: 'bar',
+          height: 350,
+          stacked: true
+        },
+        plotOptions: {
+          bar: {
+            borderRadius: 5,
+            columnWidth: '15%',
+          },
+        },
+        stroke: {
+          width: 1,
+          colors: ['#fff']
+          //colors: ["transparent"]
+        },
+        title: {
+          text: '100% Stacked Bar'
+        },
+        xaxis: {
+          categories: [2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022],
+        },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return val + "K"
+            }
+          }
+        },
+        fill: {
+          opacity: 1
+
+        },
+        dataLabels: {
+          enabled: false
+        },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'left',
+          offsetX: 40
+        }
         };
 
         var chart = new ApexCharts(document.querySelector("#chart"), options);

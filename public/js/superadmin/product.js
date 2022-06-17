@@ -1,15 +1,18 @@
 $(document).ready(async function () {
     let tbl1 = [{
-            data: 'r_name'
+            data: 'p_name'
         },
         {
-            data: 'num_of_book'
+            data: 'osio'
         },
         {
-            data: 'date'
+            data: 'hinda'
         },
         {
-            data: 'clock_time'
+            data: 'v_muo'
+        },
+        {
+            data: 'status'
         },
         {
             data: 'edit',
@@ -23,19 +26,18 @@ $(document).ready(async function () {
         },
     ];
 
-    let table = await initDataTable($('#reservation_list_update'), tbl1);
+    let table = await initDataTable($('#product_list_update'), tbl1);
 
 
 
 });
 
 
-
 $(document).on('click', '.delete', function () {
     $('#delete-modal .modal-title').html('Delete Time Inflation Code');
     $('#delete-modal #ajax-form').attr('method', 'DELETE');
     $('#delete-modal #ajax-form').attr('action', $(this).attr('data-url'));
-    $('#delete-modal #ajax-form').attr('data-table', 'reservation_list_update');
+    $('#delete-modal #ajax-form').attr('data-table', 'product_list_update');
     let modal = new bootstrap.Modal(document.getElementById('delete-modal'));
     modal.show();
     
