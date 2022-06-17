@@ -30,8 +30,13 @@ Route::get('/home', function () {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 Route::get('/chats', 'SuperAdmin\ChatsController@index');//viestit
-Route::post('/storeChat', 'SuperAdmin\ChatsController@store')->name("store.Chat");
+Route::post('/storechat', 'SuperAdmin\ChatsController@store')->name("store.Chat");
+Route::post('/deletechat_msg', 'SuperAdmin\ChatsController@destroy')->name("destroy.chatMSG");
 Route::get('/chatmap/{id}', 'SuperAdmin\ChatsController@list')->name("store.Chat");
+Route::post('/createteam', 'SuperAdmin\ChatsController@createteam')->name("store.team");
+Route::post('/updateteam/{id}', 'SuperAdmin\ChatsController@updateTeam')->name("update.team");
+Route::post('/addemployeetoteam/{id}', 'SuperAdmin\ChatsController@addEmployeeToTeam')->name("addemployee.team");
+Route::post('/deleteteam', 'SuperAdmin\ChatsController@destroyTeam')->name("destroy.team");
 
 
 
