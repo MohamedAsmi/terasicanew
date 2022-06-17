@@ -32,8 +32,8 @@ class EmployeeController extends BaseController
 
     public function list()
     {
-        $employee = DB::table('employees')->select('employee_id', 'e_name', 'work_task', 'n_of_h_week', 'last_spot')->where('employee_id','>','1')->get();
-    
+        $employee = DB::table('employees')->select('employee_id', 'e_name', 'work_task', 'n_of_h_week', 'last_spot')->where('employee_id', '>', '1')->get();
+
         return response()->json($employee);
     }
     /**
@@ -85,7 +85,7 @@ class EmployeeController extends BaseController
             $user->password = $passwod;
             $user->save();
 
-    
+
             $msg = '<tr><td style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:arial,helvetica,sans-serif;" align="left">
                 <h1 style="margin: 0px; line-height: 140%; text-align: center; word-wrap: break-word; font-weight: normal; font-family: arial,helvetica,sans-serif; font-size: 22px;">
                     Welcome to Terasica "' . $request->EmployeeName . '"
@@ -106,11 +106,10 @@ class EmployeeController extends BaseController
                 'body' => $msg
             ];
             $mail = Mail::send('emailTamplate', $mailData, function ($massage) use ($mailData) {
-                    $massage->to($mailData['Recipient'])
-                        ->from($mailData['FromEmail'], $mailData['FromName'])
-                        ->subject($mailData['subject']);
+                $massage->to($mailData['Recipient'])
+                    ->from($mailData['FromEmail'], $mailData['FromName'])
+                    ->subject($mailData['subject']);
             });
-          
         } elseif (!$Employees) {
             DB::table('users')
                 ->where('email', $request->EmployeeEmail)
@@ -182,12 +181,17 @@ class EmployeeController extends BaseController
     public function destroy($id)
     {
         $id = explode('0.', $id);
-        $employee = Employee::where('employee_id', $id[0])->delete();
-        // $employee->delete();
 
-        // DB::table('users')
-        // ->where('email', $request->EmployeeEmail)
-        // ->update(['is_admin', 0]);
-        // return redirect()->back();
+        $employee_email = Employee::where('employee_id', $id[0])->select("employees.e_email")->get();
+
+        if (!empty($employee_email[0]->e_email)) {
+            DB::table('users')
+                ->where('email', $employee_email[0]->e_email)
+                ->update(['is_admin'=> 0]);
+
+            $employee = Employee::where('employee_id', $id[0])->delete();
+        }
+
+        return redirect()->back();
     }
 }
