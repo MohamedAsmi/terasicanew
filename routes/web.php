@@ -277,16 +277,18 @@ Route::group(['middleware' => 'is_admin' ,'middleware' => 'verified'], function 
 
 //////////////////////////////////////User Route////////////////////////////////////////////////////
 Route::group(['middleware' => 'is_user' ,'middleware' => 'verified'], function () {
-    Route::get('/home2', function () {
-        return view('user.home2');
-        // return view('user_view.home');
-    })->name('userhome');
+    Route::get('/mainproduct', "TerrasicaStoresController@index")->name('userhome');
     Route::get('/home3', function () {
         return view('user.home3');
         // return view('user_view.home');
     });
     Route::get('/home4', function () {
         return view('user.home4');
+        // return view('user_view.home');
+    });
+
+    Route::get('/home2', function () {
+        return view('user.home2');
         // return view('user_view.home');
     });
 
