@@ -34,7 +34,7 @@
         </aside>
         <!-- /.control-sidebar -->
     </div>
-    <div id="modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+    {{-- <div id="modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
     <div id="delete-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
@@ -56,7 +56,7 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> --}}
     
     <!-- ./wrapper -->
     @include('layouts.scripts')

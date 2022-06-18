@@ -30,8 +30,13 @@ Route::get('/home', function () {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 Route::get('/chats', 'SuperAdmin\ChatsController@index');//viestit
-Route::post('/storeChat', 'SuperAdmin\ChatsController@store')->name("store.Chat");
+Route::post('/storechat', 'SuperAdmin\ChatsController@store')->name("store.Chat");
+Route::post('/deletechat_msg', 'SuperAdmin\ChatsController@destroy')->name("destroy.chatMSG");
 Route::get('/chatmap/{id}', 'SuperAdmin\ChatsController@list')->name("store.Chat");
+Route::post('/createteam', 'SuperAdmin\ChatsController@createteam')->name("store.team");
+Route::post('/updateteam/{id}', 'SuperAdmin\ChatsController@updateTeam')->name("update.team");
+Route::post('/addemployeetoteam/{id}', 'SuperAdmin\ChatsController@addEmployeeToTeam')->name("addemployee.team");
+Route::post('/deleteteam', 'SuperAdmin\ChatsController@destroyTeam')->name("destroy.team");
 
 
 
@@ -277,16 +282,18 @@ Route::group(['middleware' => 'is_admin' ,'middleware' => 'verified'], function 
 
 //////////////////////////////////////User Route////////////////////////////////////////////////////
 Route::group(['middleware' => 'is_user' ,'middleware' => 'verified'], function () {
-    Route::get('/home2', function () {
-        return view('user.home2');
-        // return view('user_view.home');
-    })->name('userhome');
+    Route::get('/mainproduct', "TerrasicaStoresController@index")->name('userhome');
     Route::get('/home3', function () {
         return view('user.home3');
         // return view('user_view.home');
     });
     Route::get('/home4', function () {
         return view('user.home4');
+        // return view('user_view.home');
+    });
+
+    Route::get('/home2', function () {
+        return view('user.home2');
         // return view('user_view.home');
     });
 

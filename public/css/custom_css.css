@@ -48,6 +48,13 @@
     border-radius: 9px;
 }
 
+.cursorblock{
+    cursor: not-allowed;
+}
+
+.cursorpoint{
+    cursor: pointer;
+}
 /* /////////////  navbar style  ///////////////////// */
 #navbar_list {
     list-style: none;
@@ -63,6 +70,10 @@
 
 #navbar_list li {
     padding: 0px;
+}
+
+.hide{
+    display: none;
 }
 
 #navbar_list .ch_box {
@@ -130,6 +141,9 @@
     margin-bottom: 50px;
 }
 
+.text-right{
+    text-align: right !important;
+}
 .text__color {
     color: #c4c4c4;
 }
@@ -595,7 +609,7 @@ input[type=number] {
     height: 43px;
     position: absolute;
     right: -4px;
-    top: 158px;
+    top: 144px;
     background: #000;
     border-radius: 50%;
 }
@@ -964,22 +978,32 @@ p {
     text-align: center;
     padding-top: 3px;
     border-radius: 7px;
+    cursor: pointer;
 }
-
-.chatPostion {
+.lastMsg{
+    font-size: 13px;
+    margin: 0px !important;
+    width: 70%;
+    padding: 10px;
+    height: 33px;
+}
+.chatPostion, .chatPostion2 {
     position: absolute;
     min-width: 100%;
-    height: 90%;
+    height: 80%;
     max-height: 90%;
     overflow: scroll;
     overflow-y: hidden;
     overflow-x: hidden;
+    left: 0px;
 }
 
 .chatPostion:hover, .chatPostion:active, .chatPostion:focus {
     overflow-y: auto;
 }
-
+.chatPostion2:hover, .chatPostion2:active, .chatPostion2:focus {
+    overflow-y: auto;
+}
 ::-webkit-scrollbar {
     width: 0px;
 }
@@ -1054,17 +1078,22 @@ p {
     margin-top: 0px !important;
 }
 
-@media only screen and (max-width: 1400px) {
+@media only screen and (max-width: 1600px) {
     .msg_bar {
-        bottom: 15% !important;
+        bottom: 20% !important;
     }
 
     .chatPostion {
-        height: 65% !important;
+        height: 60% !important;
+    }
+}
+@media only screen and (min-width: 1600px) {
+    .chatPostion2 {
+        height: 90% !important;
     }
 }
 
-.chatPostion .select_chat .text, .chatPostion .select_chat span {
+.chatPostion2 .select_chat .text, .chatPostion2 .select_chat span {
     margin: auto;
     margin-left: 10px;
     color: #fff !important;
@@ -1074,4 +1103,82 @@ p {
     background: #faa51a;
     cursor: pointer;
     color: #fff;
+}
+
+.senderDeleteOrUpdate .checkbox {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid rgb(82, 82, 82);
+    position: absolute;
+    bottom: 5px;
+    right: 6px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.closechatButton {
+    animation: fadeIn 1s ease-in;
+    left: 45%;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: #dfdfdf;
+    border-radius: 50%;
+    text-align: center;
+    padding-top: 8px;
+    cursor: pointer;
+    display: none;
+}
+
+#select_menu {
+    width: 150px;
+    height: auto;
+    background: #ffffff;
+    text-align: left;
+    padding: 20px;
+    list-style: none;
+    position: absolute;
+    left: -10px;
+    border: 1px solid #e1e1e1;
+    margin-top: 10px;
+    z-index: 10;
+    display: none;
+}
+
+#select_menu li {
+    border-bottom: 1px solid #e1e1e1;
+    padding: 5px 5px 5px 0px;
+    cursor: pointer;
+}
+
+.chat_lst .text{
+    overflow: hidden;
+    height: 50px;
+}
+
+.msg_lable{
+    color: #B2B2B2;
+    font-size: 10px;
+    float: left;
+}
+
+.msg_lable-sender{
+    padding-right: 6px;
+    float: right;
+}
+.msg_lable-resiver{
+    left: 12px;
+    /* float: right; */
+}
+
+.close{
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    cursor: pointer;
+}
+
+.employee_btn:hover, .addoredit-modal-body [name="submit"]:hover{
+    background-color: #000 !important;
 }

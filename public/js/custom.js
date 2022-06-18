@@ -78,3 +78,13 @@ $('.password_show i').on('click', function () {
         $('[attr="' + hideORshow + '"]').hide();
     }
 });
+
+$('.gallery-cell').on('click', function () {
+     $('#modalCart').show().css('opacity',"1");
+    // $('.modal.fade').css({ 'display': 'block', 'opacity': '1' });
+    //   $('.modal.fade .modal-dialog').css('height', '100%');
+//    $('.modal.fade').css('top', '15%');
+//    $('.modal.fade').css('border-radius', '10px');
+});
+
+
