@@ -48,6 +48,13 @@
     border-radius: 9px;
 }
 
+.cursorblock{
+    cursor: not-allowed;
+}
+
+.cursorpoint{
+    cursor: pointer;
+}
 /* /////////////  navbar style  ///////////////////// */
 #navbar_list {
     list-style: none;
@@ -1071,7 +1078,7 @@ p {
     margin-top: 0px !important;
 }
 
-@media only screen and (max-width: 1400px) {
+@media only screen and (max-width: 1600px) {
     .msg_bar {
         bottom: 20% !important;
     }
@@ -1080,7 +1087,7 @@ p {
         height: 60% !important;
     }
 }
-@media only screen and (max-width: 1800px) {
+@media only screen and (min-width: 1600px) {
     .chatPostion2 {
         height: 90% !important;
     }

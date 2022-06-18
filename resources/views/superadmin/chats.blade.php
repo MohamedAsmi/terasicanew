@@ -109,8 +109,19 @@
                                 if($Employee->e_email == auth()->user()->email){
                                     $lable = 'you';
                                 }else{
-                                    $lable = $Employee->e_name;
+                                    $lable = explode(' ',$Employee->e_name);
+                                    $lable = $lable[0];
                                 }
+                                
+                                $attr = '';
+                                for($i = 0; $i < 20; $i++){
+                                    $val = "team_members$i";
+                                    $mark = ',';
+                                    if(!empty($Employee->$val)){
+                                        $attr .= $mark.$Employee->$val;  
+                                    }
+                                }
+                                
                             @endphp
                                 <div class="friend-drawer chat_lst friend-drawer--onhover col-12 pr-0" attr="lst_{{$i}}" attr_main="{{$Employee->type}}" attr_id="{{ $Employee->g_id }}">
                                     <img class="profile-image" src="https://www.clarity-enhanced.net/wp-content/uploads/2020/06/optimus-prime.jpeg" alt="">
@@ -121,8 +132,13 @@
                                     <span class="time text-muted small" style="width: 80px;">
                                         {{$timeLine}}
                                     </span>
+                                    
+                                    <span class="group_lst hide" attr="{{ $Employee->g_id }}{{$attr}}"></span>
+
                                 </div>
                                 <hr class="w-100">
+                               
+                                
                             @endif
                         <!-- //////////////////////////////////////////////////////// -->
                         @endforeach

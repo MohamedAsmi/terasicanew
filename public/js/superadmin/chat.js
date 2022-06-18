@@ -251,10 +251,10 @@ function deleteConfirmation(value) {
     $('.modal-content').css('top', '40%');
     $('.addoredit-modal-body .form-content').html('');
 
-    if(value == 'del'){
+    if (value == 'del') {
         $('#EmployeeModal .delete-modal-body').html('<div class="text-center p-2  pt-3 mb-3 model_text primary-text-cl"><h5>Are you sure you want to delete?</h5></div><span class="float-right"><button type="button" class="btn primary-color primary-text-cl-w mt-3 mb-3" attr="close">Close</button><button type="button" class="btn btn-danger mt-3 mb-3 ml-2" attr="delete">Delete</button></span>');
-    }else{
-        $('#EmployeeModal .delete-modal-body').html('<div class="text-center p-2  pt-3 mb-3 model_text primary-text-cl"><h5>Are you sure you want to delete('+$('.settings-tray .no-gutters .text h5').text()+')?</h5></div><span class="float-right"><button type="button" class="btn primary-color primary-text-cl-w mt-3 mb-3" attr="close">Close</button><button type="button" class="btn btn-danger mt-3 mb-3 ml-2" attr="delete-team">Delete</button></span>');
+    } else {
+        $('#EmployeeModal .delete-modal-body').html('<div class="text-center p-2  pt-3 mb-3 model_text primary-text-cl"><h5>Are you sure you want to delete(' + $('.settings-tray .no-gutters .text h5').text() + ')?</h5></div><span class="float-right"><button type="button" class="btn primary-color primary-text-cl-w mt-3 mb-3" attr="close">Close</button><button type="button" class="btn btn-danger mt-3 mb-3 ml-2" attr="delete-team">Delete</button></span>');
     }
 }
 
@@ -262,11 +262,11 @@ function deleteConfirmation(value) {
 $('body').on({
     'click': function () {
         var comment = $(this).attr('attr');
-        if(comment == 'delete'){
+        if (comment == 'delete') {
             deleteMsg();
-        }else if(comment == 'delete-team'){
+        } else if (comment == 'delete-team') {
             alert();
-        }else{
+        } else {
             $('.modal.fade').css({ 'display': 'none', 'opacity': '0' });
         }
     }
@@ -360,28 +360,65 @@ function updateTeam() {
     $('.modal.fade').css({ 'display': 'block', 'opacity': '1' });
     $('.modal.fade .modal-dialog').css('height', '100%');
     $('.modal-content').css('top', '40%');
-    $('.addoredit-modal-body form').attr('action', baseurl + 'updateteam/'+$('.chat_lst.select_chat').attr('attr_id'));
-    $('.addoredit-modal-body .form-content').html('<label for="name" class="w-100 text-center mt-3 primary-text-cl-b"><h2>Muokkaa tiimiä: <span class="primary-text-cl">'+$('.chat_lst.select_chat .text h6').text()+'</span></h2></label><label for="name" class="w-100 text-center mt-3 primary-text-cl"><h4>Tiimin nimi</h4></label><input type="text" name="TeamName" id="" class="w-100 border border-secondary mb-3" style="border-radius: 5px;"><button type="submit" name="submit" class="btn primary-color primary-text-cl-w mb-4" style="margin-left: 43%;padding: 5px 30px;"><h4>Tallenna</h4></button>');
+    $('.addoredit-modal-body form').attr('action', baseurl + 'updateteam/' + $('.chat_lst.select_chat').attr('attr_id'));
+    $('.addoredit-modal-body .form-content').html('<label for="name" class="w-100 text-center mt-3 primary-text-cl-b"><h2>Muokkaa tiimiä: <span class="primary-text-cl">' + $('.chat_lst.select_chat .text h6').text() + '</span></h2></label><label for="name" class="w-100 text-center mt-3 primary-text-cl"><h4>Tiimin nimi</h4></label><input type="text" name="TeamName" id="" class="w-100 border border-secondary mb-3" style="border-radius: 5px;"><button type="submit" name="submit" class="btn primary-color primary-text-cl-w mb-4" style="margin-left: 43%;padding: 5px 30px;"><h4>Tallenna</h4></button>');
 }
 
-$('.close').on('click',function(){
+$('.close').on('click', function () {
     $('.modal.fade').css({ 'display': 'none', 'opacity': '0' });
 })
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function addEmloyee(){
+function addEmloyee() {
     $('.modal.fade').css({ 'display': 'block', 'opacity': '1' });
     $('.modal.fade .modal-dialog').css('height', '100%');
     $('.modal-content').css('top', '40%');
-    $('.addoredit-modal-body form').attr('action', baseurl + 'addemployeetoteam/'+$('.chat_lst.select_chat').attr('attr_id'));
+    $('.addoredit-modal-body form').attr('action', baseurl + 'addemployeetoteam/' + $('.chat_lst.select_chat').attr('attr_id'));
     var allEmployee = '';
-    $('.contect_list .employee_btn').each(function(){
-        allEmployee += $(this).closest("p").html();
-    })
+    var teamMembers = $('.chat_lst.select_chat .group_lst').attr('attr').split(',');
+    if (teamMembers.length <= 21) {
+        $('.contect_list .employee_btn').each(function () {
+            var ext = false;
+            for (let ww = 0; ww < teamMembers.length; ww++) {
+                if ($(this).attr('attr') == teamMembers[ww]) {
+                    $(this).addClass(['primary-color-b', 'cursorblock']).attr('disabled', true);
+                    allEmployee += $(this).closest("p").html();
+                    ext = true;
+                }
+            }
+            if (ext === false) {
+                $(this).addClass('cursorpoint');
+                allEmployee += $(this).closest("p").html();
+            }
+        })
+    }
 
-    console.log(allEmployee);
-    $('.addoredit-modal-body .form-content').html('<label for="name" class="w-100 text-center mt-3 primary-text-cl-b"><h2>Lisää työntekijöitä tiimiin</h2></label><label for="name" class="w-100 text-center mt-3 primary-text-cl"><h4>Valitse työntekijät</h4></label><div class="col-12 row employee_fields"></div><input type="hidden" name="employee_ids" id="" class="w-100 border border-secondary mb-3" style="border-radius: 5px;"><button type="submit" name="submit" class="btn primary-color primary-text-cl-w mb-4" style="margin-left: 40%;padding: 5px 30px;"><h4>Tallenna</h4></button>');
-
+    $('.addoredit-modal-body .form-content').html('<label for="name" class="w-100 text-center mt-3 primary-text-cl-b"><h2>Lisää työntekijöitä tiimiin</h2></label><label for="name" class="w-100 text-center mt-3 primary-text-cl"><h4>Valitse työntekijät</h4></label><div class="col-12 row employee_fields">' + allEmployee + '</div><input type="hidden" name="employee_ids" id="" class="w-100 border border-secondary mb-3" style="border-radius: 5px;"><button type="submit" name="submit" class="btn primary-color primary-text-cl-w mb-4 mt-3" style="margin-left: 39%;padding: 5px 30px;" disabled><h4>Tallenna</h4></button>');
+    $('.employee_fields span').show();
 }
 
-// $().
+$('body').on({
+    'click': function () {
+        var teamID = $('.chat_lst.select_chat').attr('attr_id');
+        var teamMBR = $('[attr_id="' + teamID + '"] .group_lst').attr("attr").split(',');
+        var list = true;
+        var empId = $(this).attr('attr');
+        for (let i = 1; i < teamMBR.length; i++) {
+            if (empId == teamMBR[i]) {
+                list = false;
+            }
+        }
+        if (list) {
+            var ids = $('[name="employee_ids"]').val();
+            var mark = '';
+            if ((ids) != '') {
+                var mark = ',';
+            }
+            if (ids.indexOf(empId) == -1) {
+                $('[name="employee_ids"]').val(ids + mark + empId);
+                $('.addoredit-modal-body button').removeAttr('disabled');
+                $(this).addClass('primary-color-b');
+            }
+        }
+    }
+}, '.employee_btn')
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
