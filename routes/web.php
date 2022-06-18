@@ -101,8 +101,8 @@ Route::group(['middleware' => 'auth', 'middleware'=>'verified'], function () {
     Route::put('/product-update/{id}', 'SuperAdmin\ProductController@update')->name('product.update');
 
 
-
-
+    //orders
+    Route::get('/orders/{id}', 'SuperAdmin\OrderController@show')->name('orders.show');
 
 
     // Employee List

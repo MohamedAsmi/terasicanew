@@ -5,6 +5,7 @@ namespace App\Http\Controllers\SuperAdmin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\BaseController;
+use App\Models\Orders;
 
 class OrderController extends BaseController
 {
@@ -17,10 +18,16 @@ class OrderController extends BaseController
     {
         $this->middleware('is_superadmin');
     }
-    
+
     public function index()
     {
-       return view('superadmin.orders');
+        $orders = Orders::join('subscribers','orders.subscriberid','subscribers.id')
+        ->join('products','orders.itemid','products.id')
+        ->select('subscribers.name as subscribers','products.review as review','products.hinda as price','orders.*')
+        ->get();
+
+        $data['orders'] = $orders;
+       return view('superadmin.orders', $data);
     }
     /**
      * Show the form for creating a new resource.
@@ -51,7 +58,14 @@ class OrderController extends BaseController
      */
     public function show($id)
     {
-        //
+        $orders = Orders::join('subscribers','orders.subscriberid','subscribers.id')
+        ->join('products','orders.itemid','products.id')
+        ->where('orders.id',$id)
+        ->select('subscribers.name as subscribers','products.review as review','products.p_name as name','products.hinda as price','orders.*')
+        ->first();
+
+       $data['orders'] = $orders;
+       return view('superadmin.models.orders.show', $data);
     }
 
     /**
