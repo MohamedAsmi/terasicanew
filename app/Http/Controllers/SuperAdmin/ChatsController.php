@@ -164,13 +164,12 @@ class ChatsController extends BaseController
                     ->where('type', 'group')
                     ->select('group_chats.*', 'chats.*', 'team_chats.*', 'employees.e_name', 'employees.e_email')
                     ->get();
-           
-                }
+            }
 
             // print_r($date);
 
             if ($Employees_list[0]->type == 'group' && empty(array_search($Employees_list[0]->g_id, $group_lsit))) {
-                
+
                 $Employees[] = [$Employees_list[0]];
 
                 $group_lsit[] = $Employees_list[0]->g_id;
@@ -180,7 +179,7 @@ class ChatsController extends BaseController
                 $emp_id_lsit[] =  $Employees_list[0]->employee_id;
             }
         }
-// dd($Employees);
+        // dd($Employees);
         $Employees2 = Employee::select('employee_id', 'e_name', 'e_email', 'last_spot')->where('e_status', 1)->take(5)->get();
 
         for ($i = 0; $i < count($Employees2); $i++) {
@@ -223,11 +222,11 @@ class ChatsController extends BaseController
                 $employee->sender_id = $employee->sender_id ? $employee->sender_id : '';
                 $employee->e_name = $employee->e_name ? $employee->e_name : '';
                 $employee->e_email = $employee->e_email ? $employee->e_email : '';
-                
+
                 array_push($finalrecord, $employee);
             }
         }
-        dd($finalrecord);
+        // dd($finalrecord);
         return view('superadmin.chats')->with('Employees', $finalrecord);
     }
     /////////////////////////////////////////////////////////////////////////////////////////////
@@ -259,7 +258,7 @@ class ChatsController extends BaseController
                 ->join('chats', 'group_chats.chat_id', '=', 'chats.chat_id')
                 ->join('users', 'group_chats.sender_id', '=', 'users.id')
                 ->where('id', auth()->user()->id)
-                ->select('chats.*',"users.name")
+                ->select('chats.*', "users.name")
                 ->get();
 
             $gr_chat_resive = DB::table('group_chats')
@@ -267,17 +266,17 @@ class ChatsController extends BaseController
                 ->join('chats', 'group_chats.chat_id', '=', 'chats.chat_id')
                 ->where('chats.type', 'group')
                 ->where('group_chats.sender_id', '!=', auth()->user()->id)
-                ->join('users','group_chats.sender_id','users.id')
-                ->select('chats.*','users.name')
+                ->join('users', 'group_chats.sender_id', 'users.id')
+                ->select('chats.*', 'users.name')
                 ->get();
 
             $senderList[] = new stdClass;
             for ($i = 0; $i < count($gr_chat_sender); $i++) {
-                $senderList['sender' . $i] = $gr_chat_sender[$i]->date."-rs".$gr_chat_sender[$i]->chat_id;
+                $senderList['sender' . $i] = $gr_chat_sender[$i]->date . "-rs" . $gr_chat_sender[$i]->chat_id;
             }
 
             for ($i = 0; $i < count($gr_chat_resive); $i++) {
-                $senderList['resive' . $i] = $gr_chat_resive[$i]->date."-rs".$gr_chat_resive[$i]->chat_id;
+                $senderList['resive' . $i] = $gr_chat_resive[$i]->date . "-rs" . $gr_chat_resive[$i]->chat_id;
             }
             // $gr_chat_resive = [];
 
@@ -312,20 +311,20 @@ class ChatsController extends BaseController
                 ///////////////////////////////////////////////
 
                 for ($i = 0; $i < count($gr_chat_sender); $i++) {
-                    $senderList['sender' . $i] = $gr_chat_sender[$i]->date."-rs".$gr_chat_sender[$i]->chat_id;
+                    $senderList['sender' . $i] = $gr_chat_sender[$i]->date . "-rs" . $gr_chat_sender[$i]->chat_id;
                 }
 
                 // /////////////////////////////////////////////
 
                 for ($i = 0; $i < count($gr_chat_resive); $i++) {
-                    $senderList['resive' . $i] = $gr_chat_resive[$i]->date."-rs".$gr_chat_resive[$i]->chat_id;
+                    $senderList['resive' . $i] = $gr_chat_resive[$i]->date . "-rs" . $gr_chat_resive[$i]->chat_id;
                 }
             } else {
                 return 'fail';
             }
         }
         sort($senderList);
-        
+
         $chat = [
             "resive" => $gr_chat_resive,
             'sender' => $gr_chat_sender,
@@ -423,7 +422,29 @@ class ChatsController extends BaseController
      */
     public function addEmployeeToTeam(Request $request, $id)
     {
-        //
+        $teamCH = Team_chat::where('g_id', $id)->get();
+        $Team_chat = [];
+        $ids = explode(',', $request->employee_ids);
+        $w = 0;
+        for ($r = 0; $r < count($ids); $r++) {
+            $ext = false;
+            for ($i = $w; $i < 20; $i++) {
+                if($ext){
+                    break;
+                }
+                if (empty($teamCH[0]['team_members' . $i])) {
+                    $val = "team_members$i";
+                    $Team_chat["team_members$i"] = $ids[$r];
+                    $ext = true;
+                    $w = $i+1;
+                }
+            }
+        }
+
+        
+        Team_chat::where('g_id', $id)->update($Team_chat);
+
+        return redirect()->back()->with('success','employee added');
     }
 
     /**
@@ -455,8 +476,8 @@ class ChatsController extends BaseController
 
         if (count($chat) > 0) {
             return redirect()->back()->with('Error', 'Team Name Already Exist');
-        }else{
-            Team_chat::where('g_id',$id)->update(['group_name'=>$request->TeamName]);
+        } else {
+            Team_chat::where('g_id', $id)->update(['group_name' => $request->TeamName]);
         }
 
         return redirect()->back()->with('success', 'Team Name Updated');
@@ -469,23 +490,23 @@ class ChatsController extends BaseController
      */
     public function destroy(Request $request)
     {
-        foreach($request->chat_ids as $chat_id){
+        foreach ($request->chat_ids as $chat_id) {
             $id = explode('0.', $chat_id);
             Chat::where('chat_id', $id[0])->delete();
             GroupChat::where('chat_id', $id[0])->delete();
         }
 
-        return response()->json(["msg"=>"Massage Delected Successfuly"]);
+        return response()->json(["msg" => "Massage Delected Successfuly"]);
     }
 
     public function destroyTeam(Request $request)
     {
-        foreach($request->chat_ids as $chat_id){
+        foreach ($request->chat_ids as $chat_id) {
             $id = explode('0.', $chat_id);
             Chat::where('chat_id', $id[0])->delete();
             GroupChat::where('chat_id', $id[0])->delete();
         }
 
-        return response()->json(["msg"=>"Massage Delected Successfuly"]);
+        return response()->json(["msg" => "Massage Delected Successfuly"]);
     }
 }
