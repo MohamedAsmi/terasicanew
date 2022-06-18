@@ -496,6 +496,19 @@
 
         </div>
     </div><!-- /.container-fluid -->
+
+    <div class="modal fade" id="ProductModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content primary-color-g" style="border-radius: 20px;">
+                 <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <div class="delete-modal-body p-2">
+                </div>
+                <div class="addoredit-modal-body">
+                   
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 
